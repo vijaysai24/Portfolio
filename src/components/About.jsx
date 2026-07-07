@@ -41,7 +41,7 @@ const stats = [
     title: "Years Experience",
   },
   {
-    number: "15+",
+    number: "6+",
     title: "Projects",
   },
   {

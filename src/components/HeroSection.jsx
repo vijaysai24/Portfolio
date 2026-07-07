@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import ProfileImage from "../assets/images/Profile.png";
 
-export default function Hero() {
+export default function HeroSection() {
   return (
     <section
       id="home"
@@ -11,15 +11,12 @@ export default function Hero() {
     >
       <div className="max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
 
-        {/* Left Side */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-blue-400 uppercase tracking-[4px] mb-3">
-            Hello, I'm
-          </p>
+          <p className="text-blue-400 uppercase tracking-[4px] mb-3">Hello, I'm</p>
 
           <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
             Pechetti <br />
@@ -53,7 +50,6 @@ export default function Hero() {
             architecture and modern UI.
           </p>
 
-          {/* Buttons */}
           <div className="mt-10 flex flex-wrap gap-5">
 
             <a
@@ -73,8 +69,6 @@ export default function Hero() {
             </a>
 
           </div>
-
-          {/* Social Icons */}
 
           <div className="flex gap-6 mt-10">
 
@@ -96,18 +90,13 @@ export default function Hero() {
               <FaLinkedin />
             </a>
 
-            <a
-              href="mailto:saipechetti2002@gmail.com"
-              className="text-3xl hover:text-blue-400 transition"
-            >
+            <a href="mailto:saipechetti2002@gmail.com" className="text-3xl hover:text-blue-400 transition">
               <FaEnvelope />
             </a>
 
           </div>
 
         </motion.div>
-
-        {/* Right Side */}
 
         <motion.div
           initial={{ opacity: 0, x: 80 }}
@@ -118,11 +107,7 @@ export default function Hero() {
 
           <div className="relative">
 
-            {/* Glow */}
-
             <div className="absolute -inset-5 bg-blue-500 rounded-full blur-3xl opacity-40 animate-pulse"></div>
-
-            {/* Profile */}
 
             <img
               src={ProfileImage}
