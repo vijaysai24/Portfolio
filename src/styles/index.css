@@ -1,34 +1,35 @@
 @import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-body {
-  margin: 0;
-  background: #030712;
-  color: white;
-  font-family: Inter, sans-serif;
-  overflow-x: hidden;
-}
+  body {
+    margin: 0;
+    background-color: #09090b; /* True Zinc 950 deep premium canvas */
+    color: #f4f4f5; /* Zinc 100 base readable text */
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    antialiased: true;
+  }
 
-* {
-  box-sizing: border-box;
-}
+  /* Custom Premium Hardware-Accelerated Scrollbar Tracks */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
+  ::-webkit-scrollbar-track {
+    background: #09090b;
+  }
 
-::-webkit-scrollbar-track {
-  background: #111827;
-}
+  ::-webkit-scrollbar-thumb {
+    background: #27272a; /* Zinc 800 subtle scroll pill */
+    border-radius: 9999px;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: #3b82f6;
-  border-radius: 10px;
-}
-
-section {
-  padding: 100px 10%;
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46; /* Zinc 700 on scroll drag hover */
+  }
 }

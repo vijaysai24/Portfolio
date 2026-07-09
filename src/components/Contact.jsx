@@ -12,95 +12,89 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-slate-950 text-white py-24"
+      className="relative bg-zinc-950 text-white py-24 overflow-hidden border-t border-zinc-900"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      {/* Structural Minimal Ambient Flare */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[400px] bg-zinc-800/5 rounded-full blur-[140px] pointer-events-none" />
 
-        {/* Heading */}
-
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        
+        {/* Header Block */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="space-y-3 mb-16"
         >
-          <p className="uppercase tracking-[5px] text-blue-500">
-            Contact
+          <p className="text-xs text-zinc-500 font-semibold tracking-widest uppercase">
           </p>
-
-          <h2 className="text-5xl font-bold mt-3">
-            Let's Build Something Amazing
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-100">
+            Initiate Project Scope
           </h2>
-
-          <p className="text-gray-400 mt-6 max-w-3xl mx-auto leading-8">
-            Whether you're hiring, collaborating, or just want to connect,
-            I'd love to hear from you.
-          </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mt-20">
-
-          {/* Left Side */}
-
+        <div className="grid lg:grid-cols-12 gap-12 mt-12 items-start">
+          
+          {/* Left Side: Node Informational Parameters */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            transition={{ duration: 0.4 }}
+            className="lg:col-span-5 space-y-4"
           >
-
-            <div className="bg-white/5 border border-gray-800 rounded-2xl p-6 flex items-center gap-5 hover:border-blue-500 transition">
-
-              <div className="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center">
+            {/* Email Contact Block */}
+            <div className="group bg-zinc-900/10 border border-zinc-800/40 rounded-2xl p-5 flex items-center gap-4 transition-colors duration-200 hover:border-zinc-800">
+              <div className="text-zinc-400 group-hover:text-zinc-200 text-lg transition-colors">
                 <FaEnvelope />
               </div>
-
               <div>
-                <h3 className="font-semibold text-lg">Email</h3>
-                <p className="text-gray-400">
+                <h3 className="text-xs font-mono tracking-wider text-zinc-500 uppercase">
+                  Secure Electronic Mail
+                </h3>
+                <p className="text-sm font-medium text-zinc-300 mt-0.5">
                   saipechetti2002@gmail.com
                 </p>
               </div>
-
             </div>
 
-            <div className="bg-white/5 border border-gray-800 rounded-2xl p-6 flex items-center gap-5 hover:border-blue-500 transition">
-
-              <div className="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center">
+            {/* Phone Contact Block */}
+            <div className="group bg-zinc-900/10 border border-zinc-800/40 rounded-2xl p-5 flex items-center gap-4 transition-colors duration-200 hover:border-zinc-800">
+              <div className="text-zinc-400 group-hover:text-zinc-200 text-lg transition-colors">
                 <FaPhoneAlt />
               </div>
-
               <div>
-                <h3 className="font-semibold text-lg">Phone</h3>
-                <p className="text-gray-400">
+                <h3 className="text-xs font-mono tracking-wider text-zinc-500 uppercase">
+                  Direct Inbound Voice
+                </h3>
+                <p className="text-sm font-medium text-zinc-300 mt-0.5">
                   +91 9347549149
                 </p>
               </div>
-
             </div>
 
-            <div className="bg-white/5 border border-gray-800 rounded-2xl p-6 flex items-center gap-5 hover:border-blue-500 transition">
-
-              <div className="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center">
+            {/* Location Block */}
+            <div className="group bg-zinc-900/10 border border-zinc-800/40 rounded-2xl p-5 flex items-center gap-4 transition-colors duration-200 hover:border-zinc-800">
+              <div className="text-zinc-400 group-hover:text-zinc-200 text-lg transition-colors">
                 <FaMapMarkerAlt />
               </div>
-
               <div>
-                <h3 className="font-semibold text-lg">Location</h3>
-                <p className="text-gray-400">
+                <h3 className="text-xs font-mono tracking-wider text-zinc-500 uppercase">
+                  Operational HQ Base
+                </h3>
+                <p className="text-sm font-medium text-zinc-300 mt-0.5">
                   Bangalore, Karnataka, India
                 </p>
               </div>
-
             </div>
 
-            <div className="flex gap-5 mt-8">
-
+            {/* Social Network Access Matrices */}
+            <div className="flex gap-3 pt-4">
               <a
                 href="https://linkedin.com/in/vijaypechetti"
                 target="_blank"
                 rel="noreferrer"
-                className="w-14 h-14 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition text-xl"
+                className="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-base"
               >
                 <FaLinkedin />
               </a>
@@ -109,96 +103,79 @@ export default function Contact() {
                 href="https://github.com/YOUR_GITHUB_USERNAME"
                 target="_blank"
                 rel="noreferrer"
-                className="w-14 h-14 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition text-xl"
+                className="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-base"
               >
                 <FaGithub />
               </a>
-
             </div>
-
           </motion.div>
 
-          {/* Right Side */}
-
+          {/* Right Side: Form Configuration Subsystem */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white/5 border border-gray-800 rounded-3xl p-8"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-7 bg-zinc-900/20 backdrop-blur-md border border-zinc-800/60 rounded-2xl p-6 md:p-8"
           >
+            <form className="space-y-5">
+              <div className="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label className="block mb-2 text-xs font-mono text-zinc-400 tracking-wide uppercase">
+                    Identity / Company
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="John Doe"
+                    className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors"
+                  />
+                </div>
 
-            <form className="space-y-6">
+                <div>
+                  <label className="block mb-2 text-xs font-mono text-zinc-400 tracking-wide uppercase">
+                    Routing Email Address
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="name@domain.com"
+                    className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors"
+                  />
+                </div>
+              </div>
 
               <div>
-
-                <label className="block mb-2 text-gray-300">
-                  Full Name
+                <label className="block mb-2 text-xs font-mono text-zinc-400 tracking-wide uppercase">
+                  Project Classification
                 </label>
-
                 <input
                   type="text"
-                  placeholder="Enter your name"
-                  className="w-full bg-gray-900 border border-gray-700 rounded-xl p-4 outline-none focus:border-blue-500"
+                  placeholder="System Integration / Full-Stack Engineering"
+                  className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors"
                 />
-
               </div>
 
               <div>
-
-                <label className="block mb-2 text-gray-300">
-                  Email
+                <label className="block mb-2 text-xs font-mono text-zinc-400 tracking-wide uppercase">
+                  Scope Architecture Details
                 </label>
-
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full bg-gray-900 border border-gray-700 rounded-xl p-4 outline-none focus:border-blue-500"
-                />
-
-              </div>
-
-              <div>
-
-                <label className="block mb-2 text-gray-300">
-                  Subject
-                </label>
-
-                <input
-                  type="text"
-                  placeholder="Project / Job Opportunity"
-                  className="w-full bg-gray-900 border border-gray-700 rounded-xl p-4 outline-none focus:border-blue-500"
-                />
-
-              </div>
-
-              <div>
-
-                <label className="block mb-2 text-gray-300">
-                  Message
-                </label>
-
                 <textarea
-                  rows="6"
-                  placeholder="Write your message..."
-                  className="w-full bg-gray-900 border border-gray-700 rounded-xl p-4 outline-none focus:border-blue-500 resize-none"
+                  rows="5"
+                  placeholder="Outline the operational requirements and architectural milestones..."
+                  className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors resize-none"
                 ></textarea>
-
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 transition rounded-xl py-4 font-semibold flex justify-center items-center gap-3"
+                className="w-full bg-zinc-100 hover:bg-white text-zinc-950 transition-colors duration-200 rounded-xl py-3.5 font-semibold text-xs uppercase tracking-wider flex justify-center items-center gap-2 shadow-sm"
               >
-                <FaPaperPlane />
-                Send Message
+                <FaPaperPlane className="text-[10px]" />
+                Transmit Parameters
               </button>
-
             </form>
-
           </motion.div>
 
         </div>
-
       </div>
     </section>
   );
