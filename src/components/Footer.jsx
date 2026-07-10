@@ -81,7 +81,7 @@ export default function Footer() {
             
             <div className="flex gap-2.5 pt-1">
               <a
-                href="https://github.com/YOUR_GITHUB_USERNAME"
+                href="https://github.com/vijaysai24"
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800/80 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-sm"
@@ -90,7 +90,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://linkedin.com/in/vijaypechetti"
+                href="https://www.linkedin.com/in/vijay-pechetti-01845027b/"
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800/80 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-sm"

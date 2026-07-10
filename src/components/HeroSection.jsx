@@ -86,8 +86,8 @@ export default function HeroSection() {
           {/* Social Tray */}
           <div className="pt-6 flex items-center gap-3">
             {[
-              { href: "https://github.com/", icon: <FaGithub /> },
-              { href: "https://linkedin.com/in/vijaypechetti", icon: <FaLinkedin /> },
+              { href: "https://github.com/vijaysai24", icon: <FaGithub /> },
+              { href: "https://www.linkedin.com/in/vijay-pechetti-01845027b/", icon: <FaLinkedin /> },
               { href: "mailto:saipechetti2002@gmail.com", icon: <FaEnvelope /> }
             ].map((social, i) => (
               <motion.a

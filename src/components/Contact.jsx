@@ -119,7 +119,7 @@ export default function Contact() {
             {/* Social Network Access Matrices */}
             <div className="flex gap-3 pt-4">
               <a
-                href="https://linkedin.com/in/vijaypechetti"
+                href="https://www.linkedin.com/in/vijay-pechetti-01845027b/"
                 target="_blank"
                 rel="noreferrer"
                 className="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-base"
@@ -128,7 +128,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://github.com/YOUR_GITHUB_USERNAME"
+                href="https://github.com/vijaysai24"
                 target="_blank"
                 rel="noreferrer"
                 className="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-base"
