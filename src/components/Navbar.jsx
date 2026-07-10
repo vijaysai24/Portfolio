@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-scroll";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FaLaptopCode } from "react-icons/fa";
+import { FaLaptopCode ,FaCubes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
@@ -35,8 +35,8 @@ export default function Navbar() {
             className="flex items-center gap-2.5 cursor-pointer group"
           >
             <div className="p-2 bg-zinc-800/80 border border-zinc-700/40 rounded-xl transition-colors group-hover:border-zinc-500/50">
-              <FaLaptopCode className="text-zinc-100 group-hover:text-white" size={18} />
-            </div>
+  <FaCubes  className="text-zinc-100 group-hover:text-white" size={18} />
+</div>
             <h1 className="text-lg font-semibold tracking-tight text-white">
               Sai <span className="text-zinc-400 font-normal">Vijay</span>
             </h1>

@@ -43,9 +43,6 @@ export default function Footer() {
             viewport={{ once: true }}
             className="md:col-span-3 space-y-4"
           >
-            <h3 className="text-xs font-mono tracking-wider text-zinc-500 uppercase">
-              // Navigation
-            </h3>
             <div className="grid grid-cols-2 gap-y-2.5 gap-x-4">
               {[
                 "Home",
@@ -77,9 +74,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="md:col-span-4 space-y-4"
           >
-            <h3 className="text-xs font-mono tracking-wider text-zinc-500 uppercase">
-              // Networking Ports
-            </h3>
+
             <p className="text-zinc-500 text-xs font-normal">
               Establish secure communication pipelines for operational enterprise opportunities.
             </p>

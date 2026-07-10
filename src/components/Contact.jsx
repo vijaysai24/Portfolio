@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaEnvelope,
@@ -9,6 +10,33 @@ import {
 } from "react-icons/fa";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    projectType: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const subject = encodeURIComponent(
+      `Portfolio Inquiry${formData.projectType ? ` - ${formData.projectType}` : ""}`
+    );
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nProject Type: ${formData.projectType}\n\nMessage:\n${formData.message}`
+    );
+
+    window.location.href = `mailto:saipechetti2002@gmail.com?subject=${subject}&body=${body}`;
+    setStatus("Your email app should open with the message ready to send.");
+  };
+
   return (
     <section
       id="contact"
@@ -118,7 +146,7 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-7 bg-zinc-900/20 backdrop-blur-md border border-zinc-800/60 rounded-2xl p-6 md:p-8"
           >
-            <form className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <label className="block mb-2 text-xs font-mono text-zinc-400 tracking-wide uppercase">
@@ -126,7 +154,11 @@ export default function Contact() {
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="John Doe"
+                    required
                     className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors"
                   />
                 </div>
@@ -137,8 +169,12 @@ export default function Contact() {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="name@domain.com"
-                    className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors"
+                    required
+                    className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-600 transition-colors"
                   />
                 </div>
               </div>
@@ -149,7 +185,11 @@ export default function Contact() {
                 </label>
                 <input
                   type="text"
+                  name="projectType"
+                  value={formData.projectType}
+                  onChange={handleChange}
                   placeholder="System Integration / Full-Stack Engineering"
+                  required
                   className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors"
                 />
               </div>
@@ -159,11 +199,19 @@ export default function Contact() {
                   Scope Architecture Details
                 </label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   rows="5"
                   placeholder="Outline the operational requirements and architectural milestones..."
+                  required
                   className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors resize-none"
                 ></textarea>
               </div>
+
+              {status && (
+                <p className="text-sm text-emerald-400">{status}</p>
+              )}
 
               <button
                 type="submit"
