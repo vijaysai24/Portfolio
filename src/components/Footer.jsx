@@ -11,38 +11,51 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-100 border-t border-slate-200 text-slate-900 relative overflow-hidden">
-      {/* Structural Backdrop Layer Accent */}
-      <div className="absolute bottom-0 left-1/4 w-[350px] h-[200px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
+    <footer className="relative bg-slate-50 text-slate-900 overflow-hidden border-t border-zinc-200/80">
+      {/* Ambient Gradient Soft Aura Spots (Matching Skills / Contact) */}
+      <div className="absolute top-0 -left-20 w-[400px] h-[300px] bg-blue-400/10 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-0 -right-20 w-[400px] h-[300px] bg-indigo-400/10 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Top Section: Directory Configuration */}
+      {/* Top Section */}
       <div className="max-w-6xl mx-auto px-6 py-16 relative z-10">
-        <div className="grid md:grid-cols-12 gap-12 md:gap-6">
-          
-          {/* Column 1: Core System Signature */}
+        <div className="grid md:grid-cols-12 gap-10 md:gap-8">
+
+          {/* Column 1: Signature */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="md:col-span-5 space-y-4"
           >
-            <h2 className="text-xl font-semibold tracking-tight text-zinc-900">
-              Pechetti <span className="text-zinc-500 font-normal">Sai Vijay</span>
+            <div className="inline-flex gap-2 px-3 py-1 bg-white rounded-full shadow-xs mb-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+              <span className="text-[10px] font-mono text-zinc-600 font-medium tracking-wider uppercase">
+                System Identity
+              </span>
+            </div>
+
+            <h2 className="text-xl font-bold tracking-tight text-zinc-900">
+              Pechetti <span className="text-zinc-500 font-medium">Sai Vijay</span>
             </h2>
-            <p className="text-zinc-600 text-xs leading-relaxed max-w-sm font-normal">
-              Systems architecture and full-stack implementation engineering. 
-              Focused on constructing highly performant web, mobile, and relational database runtime engines.
+            <p className="text-zinc-600 text-xs leading-relaxed max-w-sm">
+              Systems architecture and full-stack implementation engineering.
+              Focused on constructing highly performant web, mobile, and relational
+              database runtime engines.
             </p>
           </motion.div>
 
-          {/* Column 2: System Routing Mapping */}
+          {/* Column 2: Navigation Map */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="md:col-span-3 space-y-4"
           >
+            <h3 className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 font-semibold">
+              Directory Routes
+            </h3>
             <div className="grid grid-cols-2 gap-y-2.5 gap-x-4">
               {[
                 "Home",
@@ -58,7 +71,7 @@ export default function Footer() {
                   smooth
                   duration={500}
                   offset={-70}
-                  className="inline-block cursor-pointer text-xs font-medium text-zinc-600 hover:text-zinc-900 transition-colors duration-150"
+                  className="inline-block cursor-pointer text-xs font-medium text-zinc-600 hover:text-zinc-900 transition-colors duration-200"
                 >
                   {item}
                 </Link>
@@ -66,71 +79,64 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* Column 3: External Access Pipelines */}
+          {/* Column 3: External Pipelines */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="md:col-span-4 space-y-4"
           >
-
-            <p className="text-zinc-600 text-xs font-normal">
-              Establish secure communication pipelines for operational enterprise opportunities.
+            <h3 className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 font-semibold">
+              Access Pipelines
+            </h3>
+            <p className="text-zinc-600 text-xs leading-relaxed max-w-xs">
+              Establish secure communication channels for operational enterprise
+              opportunities.
             </p>
-            
+
             <div className="flex gap-2.5 pt-1">
               <a
                 href="https://github.com/vijaysai24"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 flex items-center justify-center transition-all text-sm shadow-sm"
+                className="w-10 h-10 rounded-xl bg-white/90 border border-zinc-200/90 text-zinc-600 hover:text-zinc-900 hover:bg-white hover:border-zinc-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md"
               >
                 <FaGithub />
               </a>
-
               <a
                 href="https://www.linkedin.com/in/vijay-pechetti-01845027b/"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 flex items-center justify-center transition-all text-sm shadow-sm"
+                className="w-10 h-10 rounded-xl bg-white/90 border border-zinc-200/90 text-zinc-600 hover:text-zinc-900 hover:bg-white hover:border-zinc-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md"
               >
                 <FaLinkedin />
               </a>
-
               <a
                 href="mailto:saipechetti2002@gmail.com"
-                className="w-9 h-9 rounded-lg bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 flex items-center justify-center transition-all text-sm shadow-sm"
+                className="w-10 h-10 rounded-xl bg-white/90 border border-zinc-200/90 text-zinc-600 hover:text-zinc-900 hover:bg-white hover:border-zinc-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md"
               >
                 <FaEnvelope />
               </a>
             </div>
           </motion.div>
-
         </div>
       </div>
 
-      {/* Bottom Section: Ledger */}
-      <div className="border-t border-zinc-200 bg-zinc-200/40">
-        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          
+      {/* Bottom Ledger Bar */}
+      <div className="border-t border-zinc-200/80 bg-white/60 backdrop-blur-sm relative z-10">
+        <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-[11px] font-mono tracking-wide text-zinc-500 text-center sm:text-left">
-            &copy; {currentYear} Pechetti Sai Vijay. All systems operational. 
+            &copy; {currentYear} Pechetti Sai Vijay. All systems operational.
             Engineered via React & Tailwind Core.
           </p>
 
-          {/* Return To Origin Vector Link */}
-          <Link
-            to="home"
-            smooth
-            duration={600}
-            className="cursor-pointer group"
-          >
-            <div className="w-8 h-8 rounded-lg bg-white border border-zinc-200 text-zinc-600 group-hover:text-zinc-900 group-hover:bg-zinc-50 flex items-center justify-center transition-all shadow-sm">
+          {/* Back to top */}
+          <Link to="home" smooth duration={600} className="cursor-pointer group">
+            <div className="w-9 h-9 rounded-xl bg-white border border-zinc-200/90 text-zinc-600 group-hover:text-zinc-900 group-hover:bg-white group-hover:border-zinc-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md">
               <FaArrowUp className="text-xs group-hover:-translate-y-0.5 transition-transform duration-200" />
             </div>
           </Link>
-
         </div>
       </div>
     </footer>

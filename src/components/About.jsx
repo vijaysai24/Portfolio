@@ -6,28 +6,33 @@ import {
   FaDatabase,
   FaGraduationCap,
   FaBriefcase,
+  FaUserCheck,
 } from "react-icons/fa";
 
 const highlights = [
   {
-    icon: <FaLaptopCode />,
+    icon: <FaLaptopCode className="text-blue-500" />,
     title: "Frontend Architecture",
-    description: "Building enterprise application dashboards using React, Angular, and optimized Tailwind UI tokens.",
+    description:
+      "Building enterprise application dashboards using React, Angular, and optimized Tailwind UI tokens.",
   },
   {
-    icon: <FaMobileAlt />,
+    icon: <FaMobileAlt className="text-indigo-500" />,
     title: "Mobile Development",
-    description: "Developing responsive native layouts and cross-platform fluid features using React Native.",
+    description:
+      "Developing responsive native layouts and cross-platform fluid features using React Native.",
   },
   {
-    icon: <FaServer />,
+    icon: <FaServer className="text-violet-500" />,
     title: "Backend Frameworks",
-    description: "Creating highly secure REST APIs and integration routes using Node.js, Express.js, and JWT.",
+    description:
+      "Creating highly secure REST APIs and integration routes using Node.js, Express.js, and JWT.",
   },
   {
-    icon: <FaDatabase />,
+    icon: <FaDatabase className="text-emerald-500" />,
     title: "Data & Systems Integration",
-    description: "Designing functional structured relational schemas with performant execution paths using SQL.",
+    description:
+      "Designing functional structured relational schemas with performant execution paths using SQL.",
   },
 ];
 
@@ -42,13 +47,13 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative bg-white text-zinc-900 py-24 overflow-hidden border-t border-zinc-200"
+      className="relative bg-slate-50 text-slate-900 py-12 overflow-hidden"
     >
-      {/* Structural accent background lights */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+      {/* Ambient Gradient Soft Aura Spots (Matching Hero) */}
+      <div className="absolute left-1/4 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-purple-400/10 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        
         {/* Header Block */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,20 +62,26 @@ export default function About() {
           viewport={{ once: true }}
           className="space-y-4 max-w-3xl"
         >
-          <p className="text-xs text-zinc-500 font-semibold tracking-widest uppercase">
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900">
+          {/* Status Capsule Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white border border-zinc-200 rounded-full shadow-xs">
+            <FaUserCheck className="text-blue-500 text-xs" />
+            <span className="text-[11px] font-mono text-zinc-600 font-medium tracking-wider uppercase">
+              Profile Summary
+            </span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
             Full Stack Software Engineer
           </h2>
-          <p className="text-zinc-600 text-base md:text-lg leading-relaxed font-normal pt-2">
-            I'm Pechetti Sai Vijay, a Software Engineer dedicated to constructing structured, enterprise-grade 
-            applications. I construct fast web platforms, solid backend APIs, and integration environments 
+          <p className="text-zinc-600 text-base md:text-lg leading-relaxed font-normal">
+            I'm Pechetti Sai Vijay, a Software Engineer dedicated to constructing structured, enterprise-grade
+            applications. I construct fast web platforms, solid backend APIs, and integration environments
             focused on pristine code patterns and seamless usability.
           </p>
         </motion.div>
 
-        {/* Corporate Grid Metrics */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+        {/* Glass Grid Metrics */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
           {stats.map((item, index) => (
             <motion.div
               key={index}
@@ -78,12 +89,13 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-zinc-50 border border-zinc-200 rounded-xl p-6 shadow-sm hover:border-zinc-300 transition-colors"
+              whileHover={{ y: -3 }}
+              className="bg-white/90 backdrop-blur-md border border-zinc-200/90 rounded-2xl p-6 shadow-sm shadow-zinc-200/50 hover:border-zinc-300 hover:shadow-md transition-all duration-300"
             >
-              <h4 className="text-3xl font-bold tracking-tight text-zinc-900">
+              <h3 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-slate-800 to-zinc-600 bg-clip-text text-transparent">
                 {item.number}
-              </h4>
-              <p className="mt-1 text-xs text-zinc-500 font-medium tracking-wide">
+              </h3>
+              <p className="mt-1 text-xs text-zinc-500 font-semibold tracking-wide uppercase font-mono">
                 {item.title}
               </p>
             </motion.div>
@@ -91,24 +103,25 @@ export default function About() {
         </div>
 
         {/* Focus Core Framework Capabilities */}
-        <div className="grid md:grid-cols-2 gap-4 mt-4">
+        <div className="grid md:grid-cols-2 gap-4 mt-6">
           {highlights.map((card, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group bg-zinc-50 hover:bg-zinc-100/80 border border-zinc-200 rounded-2xl p-6 flex gap-5 transition-all duration-300 shadow-sm"
+              whileHover={{ y: -2 }}
+              className="group bg-white/90 backdrop-blur-md border border-zinc-200/90 hover:border-zinc-300 rounded-[1.5rem] p-6 flex gap-5 transition-all duration-300 shadow-xs hover:shadow-md shadow-zinc-200/40"
             >
-              <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-white border border-zinc-200 text-zinc-800 flex items-center justify-center text-lg shadow-sm group-hover:border-zinc-300 transition-colors">
+              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-slate-50 border border-zinc-200/80 flex items-center justify-center text-xl shadow-2xs group-hover:scale-105 transition-transform duration-300">
                 {card.icon}
               </div>
               <div className="space-y-1.5">
-                <h3 className="text-base font-semibold text-zinc-900 transition-colors">
+                <h3 className="text-base font-bold text-zinc-900">
                   {card.title}
                 </h3>
-                <p className="text-zinc-600 text-sm leading-relaxed font-normal">
+                <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed font-normal">
                   {card.description}
                 </p>
               </div>
@@ -116,62 +129,76 @@ export default function About() {
           ))}
         </div>
 
-        {/* Timeline Grid Panels */}
+        {/* Timeline Glass Panels */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="mt-16 grid md:grid-cols-2 gap-6"
+          className="mt-12 grid md:grid-cols-2 gap-6"
         >
           {/* Timeline Node: Experience */}
-          <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 space-y-6 shadow-sm">
-            <div className="flex items-center gap-3 border-b border-zinc-200 pb-4">
-              <div className="p-2 bg-white border border-zinc-200 rounded-lg text-zinc-800 text-sm shadow-sm">
+          <div className="bg-white/90 backdrop-blur-md border border-zinc-200/90 rounded-[1.8rem] p-6 sm:p-7 space-y-6 shadow-xs">
+            <div className="flex items-center gap-3 border-b border-zinc-100 pb-4">
+              <div className="p-2.5 bg-blue-50 border border-blue-100 rounded-xl text-blue-600 text-sm shadow-2xs">
                 <FaBriefcase />
               </div>
-              <h3 className="text-lg font-semibold text-zinc-900">Work History</h3>
+              <div>
+                <h3 className="text-base font-bold text-zinc-900">Work Experience</h3>
+                <p className="text-[11px] text-zinc-400 font-mono">Engineering Timeline</p>
+              </div>
             </div>
-            
-            <div className="space-y-6 relative border-l border-zinc-200 pl-4 ml-2">
-              <div className="relative space-y-1">
-                <div className="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-zinc-800 border border-white" />
-                <h4 className="text-sm font-semibold text-zinc-900">Software Development Engineer</h4>
-                <p className="text-xs font-medium text-zinc-600">SABADO Technologies</p>
-                <p className="text-[11px] text-zinc-400 font-mono uppercase">June 2024 — Present</p>
+
+            <div className="space-y-6 relative border-l border-zinc-200/80 pl-5 ml-2">
+              <div className="relative space-y-1 group">
+                <div className="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100" />
+                <h4 className="text-sm font-bold text-zinc-900">Software Development Engineer</h4>
+                <p className="text-xs font-semibold text-zinc-600">SABADO Technologies</p>
+                <span className="inline-block px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded text-[10px] font-mono uppercase font-semibold">
+                  June 2024 — Present
+                </span>
               </div>
 
-              <div className="relative space-y-1">
-                <div className="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-zinc-400 border border-white" />
-                <h4 className="text-sm font-semibold text-zinc-900">Software Development Intern</h4>
-                <p className="text-xs font-medium text-zinc-600">Black Bucks Pvt Ltd</p>
-                <p className="text-[11px] text-zinc-400 font-mono uppercase">June 2023 — Aug 2023</p>
+              <div className="relative space-y-1 group">
+                <div className="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-300 ring-4 ring-zinc-100" />
+                <h4 className="text-sm font-bold text-zinc-900">Software Development Intern</h4>
+                <p className="text-xs font-semibold text-zinc-600">Black Bucks Pvt Ltd</p>
+                <span className="inline-block px-2 py-0.5 bg-zinc-100 text-zinc-500 rounded text-[10px] font-mono uppercase font-medium">
+                  June 2023 — Aug 2023
+                </span>
               </div>
             </div>
           </div>
 
           {/* Timeline Node: Education */}
-          <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 space-y-6 shadow-sm">
-            <div className="flex items-center gap-3 border-b border-zinc-200 pb-4">
-              <div className="p-2 bg-white border border-zinc-200 rounded-lg text-zinc-800 text-sm shadow-sm">
+          <div className="bg-white/90 backdrop-blur-md border border-zinc-200/90 rounded-[1.8rem] p-6 sm:p-7 space-y-6 shadow-xs">
+            <div className="flex items-center gap-3 border-b border-zinc-100 pb-4">
+              <div className="p-2.5 bg-indigo-50 border border-indigo-100 rounded-xl text-indigo-600 text-sm shadow-2xs">
                 <FaGraduationCap />
               </div>
-              <h3 className="text-lg font-semibold text-zinc-900">Education</h3>
+              <div>
+                <h3 className="text-base font-bold text-zinc-900">Education</h3>
+                <p className="text-[11px] text-zinc-400 font-mono">Academic Background</p>
+              </div>
             </div>
 
-            <div className="space-y-6 relative border-l border-zinc-200 pl-4 ml-2">
-              <div className="relative space-y-1">
-                <div className="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-zinc-800 border border-white" />
-                <h4 className="text-sm font-semibold text-zinc-900">B.Tech Computer Science</h4>
-                <p className="text-xs font-medium text-zinc-600">SRKR Engineering College</p>
-                <p className="text-[11px] text-zinc-400 font-mono uppercase">2020 — 2024</p>
+            <div className="space-y-6 relative border-l border-zinc-200/80 pl-5 ml-2">
+              <div className="relative space-y-1 group">
+                <div className="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-indigo-600 ring-4 ring-indigo-100" />
+                <h4 className="text-sm font-bold text-zinc-900">B.Tech Computer Science</h4>
+                <p className="text-xs font-semibold text-zinc-600">SRKR Engineering College</p>
+                <span className="inline-block px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded text-[10px] font-mono uppercase font-semibold">
+                  2020 — 2024
+                </span>
               </div>
 
-              <div className="relative space-y-1">
-                <div className="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-zinc-400 border border-white" />
-                <h4 className="text-sm font-semibold text-zinc-900">Higher Secondary Education</h4>
-                <p className="text-xs font-medium text-zinc-600">Tirumala Junior College</p>
-                <p className="text-[11px] text-zinc-400 font-mono uppercase">2018 — 2020</p>
+              <div className="relative space-y-1 group">
+                <div className="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-300 ring-4 ring-zinc-100" />
+                <h4 className="text-sm font-bold text-zinc-900">Higher Secondary Education</h4>
+                <p className="text-xs font-semibold text-zinc-600">Tirumala Junior College</p>
+                <span className="inline-block px-2 py-0.5 bg-zinc-100 text-zinc-500 rounded text-[10px] font-mono uppercase font-medium">
+                  2018 — 2020
+                </span>
               </div>
             </div>
           </div>
