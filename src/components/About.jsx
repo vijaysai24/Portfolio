@@ -60,7 +60,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="space-y-4 max-w-3xl"
+          className="text-center max-w-2xl mx-auto space-y-3 mb-16"
         >
           {/* Status Capsule Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white border border-zinc-200 rounded-full shadow-xs">
@@ -73,7 +73,7 @@ export default function About() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
             Full Stack Software Engineer
           </h2>
-          <p className="text-zinc-600 text-base md:text-lg leading-relaxed font-normal">
+          <p className="text-zinc-600 text-sm md:text-sm leading-relaxed font-normal">
             I'm Pechetti Sai Vijay, a Software Engineer dedicated to constructing structured, enterprise-grade
             applications. I construct fast web platforms, solid backend APIs, and integration environments
             focused on pristine code patterns and seamless usability.
