@@ -40,10 +40,10 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative bg-zinc-950 text-white py-24 overflow-hidden border-t border-zinc-900"
+      className="relative bg-white text-zinc-900 py-24 overflow-hidden border-t border-zinc-200"
     >
       {/* Structural Minimal Ambient Flare */}
-      <div className="absolute bottom-0 right-0 w-[500px] h-[400px] bg-zinc-800/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[400px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
@@ -56,7 +56,7 @@ export default function Contact() {
         >
           <p className="text-xs text-zinc-500 font-semibold tracking-widest uppercase">
           </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-100">
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900">
             Initiate Project Scope
           </h2>
         </motion.div>
@@ -72,45 +72,45 @@ export default function Contact() {
             className="lg:col-span-5 space-y-4"
           >
             {/* Email Contact Block */}
-            <div className="group bg-zinc-900/10 border border-zinc-800/40 rounded-2xl p-5 flex items-center gap-4 transition-colors duration-200 hover:border-zinc-800">
-              <div className="text-zinc-400 group-hover:text-zinc-200 text-lg transition-colors">
+            <div className="group bg-zinc-50 border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 transition-colors duration-200 hover:border-zinc-300 shadow-sm">
+              <div className="text-zinc-600 group-hover:text-zinc-900 text-lg transition-colors">
                 <FaEnvelope />
               </div>
               <div>
                 <h3 className="text-xs font-mono tracking-wider text-zinc-500 uppercase">
                   Secure Electronic Mail
                 </h3>
-                <p className="text-sm font-medium text-zinc-300 mt-0.5">
+                <p className="text-sm font-medium text-zinc-800 mt-0.5">
                   saipechetti2002@gmail.com
                 </p>
               </div>
             </div>
 
             {/* Phone Contact Block */}
-            <div className="group bg-zinc-900/10 border border-zinc-800/40 rounded-2xl p-5 flex items-center gap-4 transition-colors duration-200 hover:border-zinc-800">
-              <div className="text-zinc-400 group-hover:text-zinc-200 text-lg transition-colors">
+            <div className="group bg-zinc-50 border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 transition-colors duration-200 hover:border-zinc-300 shadow-sm">
+              <div className="text-zinc-600 group-hover:text-zinc-900 text-lg transition-colors">
                 <FaPhoneAlt />
               </div>
               <div>
                 <h3 className="text-xs font-mono tracking-wider text-zinc-500 uppercase">
                   Direct Inbound Voice
                 </h3>
-                <p className="text-sm font-medium text-zinc-300 mt-0.5">
+                <p className="text-sm font-medium text-zinc-800 mt-0.5">
                   +91 9347549149
                 </p>
               </div>
             </div>
 
             {/* Location Block */}
-            <div className="group bg-zinc-900/10 border border-zinc-800/40 rounded-2xl p-5 flex items-center gap-4 transition-colors duration-200 hover:border-zinc-800">
-              <div className="text-zinc-400 group-hover:text-zinc-200 text-lg transition-colors">
+            <div className="group bg-zinc-50 border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 transition-colors duration-200 hover:border-zinc-300 shadow-sm">
+              <div className="text-zinc-600 group-hover:text-zinc-900 text-lg transition-colors">
                 <FaMapMarkerAlt />
               </div>
               <div>
                 <h3 className="text-xs font-mono tracking-wider text-zinc-500 uppercase">
                   Operational HQ Base
                 </h3>
-                <p className="text-sm font-medium text-zinc-300 mt-0.5">
+                <p className="text-sm font-medium text-zinc-800 mt-0.5">
                   Bangalore, Karnataka, India
                 </p>
               </div>
@@ -122,7 +122,7 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/vijay-pechetti-01845027b/"
                 target="_blank"
                 rel="noreferrer"
-                className="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-base"
+                className="w-11 h-11 rounded-xl bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 flex items-center justify-center transition-all text-base shadow-sm"
               >
                 <FaLinkedin />
               </a>
@@ -131,7 +131,7 @@ export default function Contact() {
                 href="https://github.com/vijaysai24"
                 target="_blank"
                 rel="noreferrer"
-                className="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-base"
+                className="w-11 h-11 rounded-xl bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 flex items-center justify-center transition-all text-base shadow-sm"
               >
                 <FaGithub />
               </a>
@@ -144,12 +144,12 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:col-span-7 bg-zinc-900/20 backdrop-blur-md border border-zinc-800/60 rounded-2xl p-6 md:p-8"
+            className="lg:col-span-7 bg-zinc-50/80 backdrop-blur-md border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm"
           >
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
-                  <label className="block mb-2 text-xs font-mono text-zinc-400 tracking-wide uppercase">
+                  <label className="block mb-2 text-xs font-mono text-zinc-500 tracking-wide uppercase">
                     Identity / Company
                   </label>
                   <input
@@ -159,12 +159,12 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="John Doe"
                     required
-                    className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors"
+                    className="w-full bg-white border border-zinc-300 rounded-xl p-3.5 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block mb-2 text-xs font-mono text-zinc-400 tracking-wide uppercase">
+                  <label className="block mb-2 text-xs font-mono text-zinc-500 tracking-wide uppercase">
                     Routing Email Address
                   </label>
                   <input
@@ -174,13 +174,13 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="name@domain.com"
                     required
-                    className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-600 transition-colors"
+                    className="w-full bg-white border border-zinc-300 rounded-xl p-3.5 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block mb-2 text-xs font-mono text-zinc-400 tracking-wide uppercase">
+                <label className="block mb-2 text-xs font-mono text-zinc-500 tracking-wide uppercase">
                   Project Classification
                 </label>
                 <input
@@ -190,12 +190,12 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="System Integration / Full-Stack Engineering"
                   required
-                  className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors"
+                  className="w-full bg-white border border-zinc-300 rounded-xl p-3.5 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block mb-2 text-xs font-mono text-zinc-400 tracking-wide uppercase">
+                <label className="block mb-2 text-xs font-mono text-zinc-500 tracking-wide uppercase">
                   Scope Architecture Details
                 </label>
                 <textarea
@@ -205,17 +205,17 @@ export default function Contact() {
                   rows="5"
                   placeholder="Outline the operational requirements and architectural milestones..."
                   required
-                  className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl p-3.5 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition-colors resize-none"
+                  className="w-full bg-white border border-zinc-300 rounded-xl p-3.5 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors resize-none"
                 ></textarea>
               </div>
 
               {status && (
-                <p className="text-sm text-emerald-400">{status}</p>
+                <p className="text-sm text-emerald-600 font-medium">{status}</p>
               )}
 
               <button
                 type="submit"
-                className="w-full bg-zinc-100 hover:bg-white text-zinc-950 transition-colors duration-200 rounded-xl py-3.5 font-semibold text-xs uppercase tracking-wider flex justify-center items-center gap-2 shadow-sm"
+                className="w-full bg-zinc-900 hover:bg-zinc-800 text-white transition-colors duration-200 rounded-xl py-3.5 font-semibold text-xs uppercase tracking-wider flex justify-center items-center gap-2 shadow-md shadow-zinc-900/10"
               >
                 <FaPaperPlane className="text-[10px]" />
                 Transmit Parameters

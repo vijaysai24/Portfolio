@@ -53,10 +53,10 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative bg-zinc-950 text-white py-24 overflow-hidden border-t border-zinc-900"
+      className="relative bg-slate-50 text-slate-900 py-24 overflow-hidden border-t border-slate-200"
     >
       {/* Structural Minimal Backlighting Accent */}
-      <div className="absolute top-1/2 left-10 w-[400px] h-[400px] bg-zinc-800/5 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 left-10 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
@@ -69,12 +69,12 @@ export default function Skills() {
         >
           <p className="text-xs text-zinc-500 font-semibold tracking-widest uppercase">
           </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-100">
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900">
             Engineered Core Stack
           </h2>
         </motion.div>
 
-        {/* High-Contrast Corporate Stack Architecture */}
+        {/* Stack Architecture Cards */}
         <div className="grid md:grid-cols-3 gap-6">
           {skillCategories.map((category, index) => (
             <motion.div
@@ -83,12 +83,12 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-zinc-900/20 border border-zinc-800/60 rounded-2xl p-6 flex flex-col justify-between shadow-sm"
+              className="bg-white border border-zinc-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="space-y-4">
                 {/* Section Branding */}
                 <div className="space-y-1.5">
-                  <h3 className="text-lg font-semibold text-zinc-100">
+                  <h3 className="text-lg font-semibold text-zinc-900">
                     {category.title}
                   </h3>
                   <p className="text-xs text-zinc-500 leading-relaxed font-normal">
@@ -96,19 +96,19 @@ export default function Skills() {
                   </p>
                 </div>
 
-                <hr className="border-zinc-800/60" />
+                <hr className="border-zinc-200" />
 
                 {/* Sub-grid Inner Components */}
                 <div className="space-y-2.5 pt-2">
                   {category.skills.map((skill, i) => (
                     <div
                       key={i}
-                      className="group flex items-center gap-3 bg-zinc-900/40 border border-zinc-800/40 hover:border-zinc-700/60 p-3 rounded-xl transition-all duration-200"
+                      className="group flex items-center gap-3 bg-zinc-50 border border-zinc-200 hover:border-zinc-300 hover:bg-zinc-100/80 p-3 rounded-xl transition-all duration-200"
                     >
-                      <div className="text-zinc-400 group-hover:text-zinc-200 text-lg transition-colors duration-200">
+                      <div className="text-zinc-600 group-hover:text-zinc-900 text-lg transition-colors duration-200">
                         {skill.icon}
                       </div>
-                      <span className="text-sm font-medium text-zinc-300 group-hover:text-zinc-100 transition-colors duration-200">
+                      <span className="text-sm font-medium text-zinc-700 group-hover:text-zinc-900 transition-colors duration-200">
                         {skill.name}
                       </span>
                     </div>
@@ -119,13 +119,13 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Complete Directory Overview Grid */}
+        {/* Directory Overview Grid */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 bg-zinc-900/10 border border-zinc-800/40 rounded-2xl p-6"
+          className="mt-16 bg-white border border-zinc-200 rounded-2xl p-6 shadow-sm"
         >
           <div className="flex flex-wrap items-center justify-center gap-2">
             {[
@@ -144,7 +144,7 @@ export default function Skills() {
             ].map((tech, index) => (
               <span
                 key={index}
-                className="bg-zinc-900/40 border border-zinc-800/80 text-zinc-400 px-3 py-1.5 rounded-lg text-xs font-mono font-medium tracking-wide transition-colors duration-150 hover:bg-zinc-900/80 hover:text-zinc-200 select-none"
+                className="bg-zinc-50 border border-zinc-200 text-zinc-700 px-3 py-1.5 rounded-lg text-xs font-mono font-medium tracking-wide transition-colors duration-150 hover:bg-zinc-100 hover:text-zinc-900 select-none"
               >
                 {tech}.env
               </span>

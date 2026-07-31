@@ -11,31 +11,31 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-zinc-950 border-t border-zinc-900 text-white relative overflow-hidden">
+    <footer className="bg-slate-100 border-t border-slate-200 text-slate-900 relative overflow-hidden">
       {/* Structural Backdrop Layer Accent */}
-      <div className="absolute bottom-0 left-1/4 w-[350px] h-[200px] bg-zinc-800/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[350px] h-[200px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Top Section: Directory Configuration */}
       <div className="max-w-6xl mx-auto px-6 py-16 relative z-10">
         <div className="grid md:grid-cols-12 gap-12 md:gap-6">
           
-          {/* Column 1: Core System Signature (Weight: 5) */}
+          {/* Column 1: Core System Signature */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="md:col-span-5 space-y-4"
           >
-            <h2 className="text-xl font-semibold tracking-tight text-zinc-100">
-              Pechetti <span className="text-zinc-400 font-normal">Sai Vijay</span>
+            <h2 className="text-xl font-semibold tracking-tight text-zinc-900">
+              Pechetti <span className="text-zinc-500 font-normal">Sai Vijay</span>
             </h2>
-            <p className="text-zinc-500 text-xs leading-relaxed max-w-sm font-normal">
+            <p className="text-zinc-600 text-xs leading-relaxed max-w-sm font-normal">
               Systems architecture and full-stack implementation engineering. 
               Focused on constructing highly performant web, mobile, and relational database runtime engines.
             </p>
           </motion.div>
 
-          {/* Column 2: System Routing Mapping (Weight: 3) */}
+          {/* Column 2: System Routing Mapping */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export default function Footer() {
                   smooth
                   duration={500}
                   offset={-70}
-                  className="inline-block cursor-pointer text-xs font-medium text-zinc-400 hover:text-zinc-100 transition-colors duration-150"
+                  className="inline-block cursor-pointer text-xs font-medium text-zinc-600 hover:text-zinc-900 transition-colors duration-150"
                 >
                   {item}
                 </Link>
@@ -66,7 +66,7 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* Column 3: Secure External Access Pipelines (Weight: 4) */}
+          {/* Column 3: External Access Pipelines */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export default function Footer() {
             className="md:col-span-4 space-y-4"
           >
 
-            <p className="text-zinc-500 text-xs font-normal">
+            <p className="text-zinc-600 text-xs font-normal">
               Establish secure communication pipelines for operational enterprise opportunities.
             </p>
             
@@ -84,7 +84,7 @@ export default function Footer() {
                 href="https://github.com/vijaysai24"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800/80 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-sm"
+                className="w-9 h-9 rounded-lg bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 flex items-center justify-center transition-all text-sm shadow-sm"
               >
                 <FaGithub />
               </a>
@@ -93,14 +93,14 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/vijay-pechetti-01845027b/"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800/80 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-sm"
+                className="w-9 h-9 rounded-lg bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 flex items-center justify-center transition-all text-sm shadow-sm"
               >
                 <FaLinkedin />
               </a>
 
               <a
                 href="mailto:saipechetti2002@gmail.com"
-                className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800/80 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 flex items-center justify-center transition-all text-sm"
+                className="w-9 h-9 rounded-lg bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 flex items-center justify-center transition-all text-sm shadow-sm"
               >
                 <FaEnvelope />
               </a>
@@ -110,11 +110,11 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Section: Immutable Data Ledger */}
-      <div className="border-t border-zinc-900 bg-zinc-950/40">
+      {/* Bottom Section: Ledger */}
+      <div className="border-t border-zinc-200 bg-zinc-200/40">
         <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           
-          <p className="text-[11px] font-mono tracking-wide text-zinc-600 text-center sm:text-left">
+          <p className="text-[11px] font-mono tracking-wide text-zinc-500 text-center sm:text-left">
             &copy; {currentYear} Pechetti Sai Vijay. All systems operational. 
             Engineered via React & Tailwind Core.
           </p>
@@ -126,7 +126,7 @@ export default function Footer() {
             duration={600}
             className="cursor-pointer group"
           >
-            <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800/80 text-zinc-400 group-hover:text-zinc-100 group-hover:bg-zinc-800/50 flex items-center justify-center transition-all">
+            <div className="w-8 h-8 rounded-lg bg-white border border-zinc-200 text-zinc-600 group-hover:text-zinc-900 group-hover:bg-zinc-50 flex items-center justify-center transition-all shadow-sm">
               <FaArrowUp className="text-xs group-hover:-translate-y-0.5 transition-transform duration-200" />
             </div>
           </Link>

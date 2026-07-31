@@ -37,10 +37,10 @@ export default function ProjectList() {
   return (
     <section
       id="projects"
-      className="relative bg-zinc-950 text-white py-24 overflow-hidden border-t border-zinc-900"
+      className="relative bg-slate-50 text-slate-900 py-24 overflow-hidden border-t border-slate-200"
     >
       {/* Structural Accent Lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-zinc-800/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
@@ -53,7 +53,7 @@ export default function ProjectList() {
         >
           <p className="text-xs text-zinc-500 font-semibold tracking-widest uppercase">
           </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-100">
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900">
             Featured Projects
           </h2>
         </motion.div>
@@ -67,17 +67,17 @@ export default function ProjectList() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group bg-zinc-900/20 backdrop-blur-md border border-zinc-800/60 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between"
+              className="group bg-white border border-zinc-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div>
                 {/* Media Mask Segment */}
-                <div className="overflow-hidden relative h-52 bg-zinc-900 border-b border-zinc-800/80">
+                <div className="overflow-hidden relative h-52 bg-zinc-100 border-b border-zinc-200">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="h-full w-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 group-hover:grayscale-0"
+                    className="h-full w-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                   />
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 bg-zinc-950/80 backdrop-blur-md border border-zinc-800/60 text-zinc-300 px-3 py-1 rounded-lg text-[11px] font-mono tracking-wider uppercase">
+                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 bg-white/90 backdrop-blur-md border border-zinc-200 text-zinc-800 px-3 py-1 rounded-lg text-[11px] font-mono tracking-wider uppercase shadow-sm">
                     <span className="text-xs">{project.icon}</span>
                     {project.category}
                   </div>
@@ -85,11 +85,11 @@ export default function ProjectList() {
 
                 {/* Content Parameters */}
                 <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-semibold tracking-tight text-zinc-100 group-hover:text-white transition-colors">
+                  <h3 className="text-xl font-semibold tracking-tight text-zinc-900 transition-colors">
                     {project.title}
                   </h3>
                   
-                  <p className="text-zinc-400 text-sm leading-relaxed font-normal">
+                  <p className="text-zinc-600 text-sm leading-relaxed font-normal">
                     {project.description}
                   </p>
 
@@ -98,7 +98,7 @@ export default function ProjectList() {
                     {project.technologies.map((tech, i) => (
                       <span
                         key={i}
-                        className="bg-zinc-900/50 border border-zinc-800/80 text-zinc-400 px-2.5 py-1 rounded-md text-xs font-mono font-medium"
+                        className="bg-zinc-100 border border-zinc-200 text-zinc-700 px-2.5 py-1 rounded-md text-xs font-mono font-medium"
                       >
                         {tech}
                       </span>
@@ -107,15 +107,15 @@ export default function ProjectList() {
                 </div>
               </div>
 
-              {/* Minimal Action Triggers */}
+              {/* Action Triggers */}
               <div className="p-6 pt-0 flex gap-3">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 inline-flex justify-center items-center gap-2 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800/80 text-zinc-300 hover:text-white hover:bg-zinc-800/60 text-xs font-medium transition-colors duration-200"
+                  className="flex-1 inline-flex justify-center items-center gap-2 py-2.5 rounded-xl bg-zinc-100 border border-zinc-200 text-zinc-800 hover:bg-zinc-200 text-xs font-medium transition-colors duration-200"
                 >
-                  <FaGithub className="text-sm" />
+                  <FaGithub className="text-sm text-zinc-700" />
                   Source Code
                 </a>
 
@@ -123,7 +123,7 @@ export default function ProjectList() {
                   href={project.demo}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 inline-flex justify-center items-center gap-2 py-2.5 rounded-xl bg-zinc-100 text-zinc-950 hover:bg-white text-xs font-semibold transition-colors duration-200"
+                  className="flex-1 inline-flex justify-center items-center gap-2 py-2.5 rounded-xl bg-zinc-900 text-white hover:bg-zinc-800 text-xs font-semibold transition-colors duration-200 shadow-sm"
                 >
                   <FaExternalLinkAlt className="text-[10px]" />
                   Launch Platform
@@ -133,25 +133,25 @@ export default function ProjectList() {
           ))}
         </div>
 
-        {/* Corporate Footer Call-To-Action Board */}
+        {/* Footer Call-To-Action Board */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-24 border border-zinc-800/60 bg-gradient-to-br from-zinc-900/30 to-zinc-950 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden"
+          className="mt-24 border border-zinc-200 bg-gradient-to-br from-white to-zinc-100 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden shadow-sm"
         >
           <div className="max-w-2xl mx-auto space-y-4 relative z-10">
-            <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-100">
+            <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">
               System Engineering Integration
             </h3>
-            <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-normal">
+            <p className="text-zinc-600 text-sm md:text-base leading-relaxed font-normal">
               I am focused on designing structural user ecosystems, optimized queries, 
               and robust APIs for scalable runtime performance. Let's synchronize on your technical scope.
             </p>
             <div className="pt-4">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-6 py-3 bg-zinc-100 hover:bg-white text-zinc-950 rounded-xl text-sm font-semibold transition-colors duration-200 shadow-sm"
+                className="inline-flex items-center justify-center px-6 py-3 bg-zinc-900 hover:bg-zinc-800 text-white rounded-xl text-sm font-semibold transition-colors duration-200 shadow-md shadow-zinc-900/10"
               >
                 Establish Connection
               </a>
