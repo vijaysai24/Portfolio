@@ -130,13 +130,6 @@ export default function Footer() {
             &copy; {currentYear} Pechetti Sai Vijay. All systems operational.
             Engineered via React & Tailwind Core.
           </p>
-
-          {/* Back to top */}
-          <Link to="home" smooth duration={600} className="cursor-pointer group">
-            <div className="w-9 h-9 rounded-xl bg-white border border-zinc-200/90 text-zinc-600 group-hover:text-zinc-900 group-hover:bg-white group-hover:border-zinc-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md">
-              <FaArrowUp className="text-xs group-hover:-translate-y-0.5 transition-transform duration-200" />
-            </div>
-          </Link>
         </div>
       </div>
     </footer>
