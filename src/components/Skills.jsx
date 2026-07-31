@@ -6,94 +6,59 @@ import {
   FaGitAlt,
   FaGithub,
   FaDatabase,
+  FaCode,
+  FaServer,
+  FaTools,
 } from "react-icons/fa";
-
 import {
   SiExpress,
-  SiJavascript,
   SiMysql,
   SiTailwindcss,
   SiPostman,
   SiTypescript,
-  SiReact,
+  SiJavascript,
 } from "react-icons/si";
 
 const skillCategories = [
   {
-    title: "Frontend",
+    title: "Frontend Architecture",
+    categoryBadge: "Client Engine",
+    icon: <FaCode className="text-blue-500" />,
+    description:
+      "Developing dynamic client-side engines, reactive state, and modular UI systems.",
     skills: [
-      {
-        name: "React JS",
-        icon: <FaReact className="text-cyan-400" />,
-        level: 95,
-      },
-      {
-        name: "Angular",
-        icon: <FaAngular className="text-red-500" />,
-        level: 90,
-      },
-      {
-        name: "React Native",
-        icon: <SiReact className="text-cyan-400" />,
-        level: 90,
-      },
-      {
-        name: "Tailwind CSS",
-        icon: <SiTailwindcss className="text-sky-400" />,
-        level: 95,
-      },
+      { name: "Angular", icon: <FaAngular className="text-red-500" /> },
+      { name: "React JS", icon: <FaReact className="text-sky-400" /> },
+      { name: "React Native", icon: <FaReact className="text-sky-500" /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
+      { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
+      { name: "JavaScript", icon: <SiJavascript className="text-amber-400" /> },
     ],
   },
-
   {
-    title: "Backend",
+    title: "Backend & Systems",
+    categoryBadge: "Server Runtime",
+    icon: <FaServer className="text-indigo-500" />,
+    description:
+      "Constructing modular API routes, middleware pipelines, and runtime models.",
     skills: [
-      {
-        name: "Node.js",
-        icon: <FaNodeJs className="text-green-500" />,
-        level: 90,
-      },
-      {
-        name: "Express.js",
-        icon: <SiExpress className="text-gray-300" />,
-        level: 88,
-      },
-      {
-        name: "REST APIs",
-        icon: <FaDatabase className="text-blue-400" />,
-        level: 95,
-      },
-      {
-        name: "JavaScript",
-        icon: <SiJavascript className="text-yellow-400" />,
-        level: 95,
-      },
+      { name: "Node.js", icon: <FaNodeJs className="text-emerald-500" /> },
+      { name: "Express.js", icon: <SiExpress className="text-zinc-800" /> },
+      { name: "REST APIs", icon: <FaDatabase className="text-indigo-500" /> },
+      { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
     ],
   },
-
   {
-    title: "Database & Tools",
+    title: "Data & Tooling",
+    categoryBadge: "DevOps & Tooling",
+    icon: <FaTools className="text-violet-500" />,
+    description:
+      "Relational storage schemas, version control orchestration, and API testing sandboxes.",
     skills: [
-      {
-        name: "MySQL",
-        icon: <SiMysql className="text-blue-500" />,
-        level: 88,
-      },
-      {
-        name: "Git",
-        icon: <FaGitAlt className="text-orange-500" />,
-        level: 90,
-      },
-      {
-        name: "GitHub",
-        icon: <FaGithub className="text-white" />,
-        level: 92,
-      },
-      {
-        name: "Postman",
-        icon: <SiPostman className="text-orange-400" />,
-        level: 90,
-      },
+      { name: "Git Engine", icon: <FaGitAlt className="text-orange-500" /> },
+      { name: "GitHub Enterprise", icon: <FaGithub className="text-zinc-900" /> },
+      { name: "Postman API", icon: <SiPostman className="text-orange-600" /> },
+      { name: "Data Management", icon: <FaDatabase className="text-slate-600" /> },
     ],
   },
 ];
@@ -102,148 +67,125 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="bg-black text-white py-24"
+      className="relative bg-slate-50 text-slate-900 py-12 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      {/* Ambient Gradient Soft Aura Spots (Matching Hero) */}
+      <div className="absolute top-1/4 -left-20 w-[450px] h-[450px] bg-blue-400/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-[450px] h-[450px] bg-indigo-400/10 rounded-full blur-[150px] pointer-events-none" />
 
-        {/* Heading */}
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
 
+        {/* Header Block */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center"
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto space-y-3 mb-16"
         >
+          <div className="inline-flex gap-2 px-3.5 py-1 bg-white rounded-full shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+            <span className="text-[11px] font-mono text-zinc-600 font-medium tracking-wider uppercase">
+              Technical Competencies
+            </span>
+          </div>
 
-          <p className="text-blue-500 uppercase tracking-[5px]">
-            Technical Skills
-          </p>
-
-          <h2 className="text-5xl font-bold mt-3">
-            My Technology Stack
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
+            Engineered Stack & Architecture
           </h2>
-
-          <p className="mt-6 text-gray-400 max-w-3xl mx-auto leading-8">
-            I enjoy building scalable full-stack applications using modern
-            frontend technologies, secure backend APIs, and optimized databases.
+          <p className="text-zinc-600 text-sm sm:text-base leading-relaxed">
+            A comprehensive suite of modern frameworks, runtime engines, and development tools engineered for scalability.
           </p>
-
         </motion.div>
 
-        {/* Categories */}
-
-        <div className="space-y-12 mt-20">
-
+        {/* Stack Architecture Cards Grid */}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {skillCategories.map((category, index) => (
-
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="bg-white/5 rounded-3xl border border-gray-800 p-8"
+              transition={{ duration: 0.5, delay: index * 0.12 }}
+              whileHover={{ y: -4 }}
+              className="bg-white/90 backdrop-blur-sm border border-zinc-200/90 rounded-[1.8rem] p-6 lg:p-7 flex flex-col justify-between shadow-sm hover:shadow-xl hover:shadow-zinc-200/50 hover:border-zinc-300 transition-all duration-300 group"
             >
-
-              <h3 className="text-3xl font-bold text-blue-500 mb-10">
-                {category.title}
-              </h3>
-
-              <div className="grid md:grid-cols-2 gap-8">
-
-                {category.skills.map((skill, i) => (
-
-                  <div key={i}>
-
-                    <div className="flex justify-between items-center mb-3">
-
-                      <div className="flex items-center gap-3">
-
-                        <span className="text-3xl">
-
-                          {skill.icon}
-
-                        </span>
-
-                        <span className="text-lg font-medium">
-
-                          {skill.name}
-
-                        </span>
-
-                      </div>
-
-                      <span className="text-blue-400">
-
-                        {skill.level}%
-
-                      </span>
-
+              <div className="space-y-5">
+                {/* Section Header */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="p-3 bg-slate-100/80 border border-zinc-200/80 rounded-2xl text-lg group-hover:scale-105 transition-transform duration-300">
+                      {category.icon}
                     </div>
-
-                    <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
-
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1 }}
-                        viewport={{ once: true }}
-                        className="bg-gradient-to-r from-blue-500 to-cyan-400 h-3 rounded-full"
-                      />
-
-                    </div>
-
+                    <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 bg-zinc-100 text-zinc-600 rounded-md font-semibold">
+                      {category.categoryBadge}
+                    </span>
                   </div>
 
-                ))}
+                  <div>
+                    <h3 className="text-lg font-bold text-zinc-900">
+                      {category.title}
+                    </h3>
+                    <p className="text-xs text-zinc-500 mt-1 leading-relaxed">
+                      {category.description}
+                    </p>
+                  </div>
+                </div>
 
+                <hr className="border-zinc-100" />
+
+                {/* Sub-grid Inner Components */}
+                <div className="grid grid-cols-2 gap-2.5 pt-1">
+                  {category.skills.map((skill, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-2.5 bg-slate-50/80 border border-zinc-200/70 hover:border-zinc-300 hover:bg-white p-2.5 rounded-xl transition-all duration-200 shadow-2xs"
+                    >
+                      <div className="text-base flex-shrink-0">
+                        {skill.icon}
+                      </div>
+                      <span className="text-xs font-semibold text-zinc-700 truncate">
+                        {skill.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-
             </motion.div>
-
           ))}
-
         </div>
 
-        {/* Bottom Tech Grid */}
-
+        {/* Directory Environment Overview Bar */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mt-20"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-12 bg-white/80 backdrop-blur-md border border-zinc-200/90 rounded-2xl p-5 shadow-xs"
         >
-
-          {[
-            "React",
-            "Angular",
-            "React Native",
-            "Node.js",
-            "Express.js",
-            "MySQL",
-            "Tailwind CSS",
-            "Git",
-            "GitHub",
-            "REST API",
-            "JavaScript",
-            "TypeScript",
-          ].map((tech, index) => (
-
-            <motion.div
-              key={index}
-              whileHover={{
-                scale: 1.08,
-                y: -5,
-              }}
-              className="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center font-semibold hover:border-blue-500 transition"
-            >
-
-              {tech}
-
-            </motion.div>
-
-          ))}
-
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {[
+              "Angular",
+              "React",
+              "React Native",
+              "Node.js",
+              "Express.js",
+              "MySQL",
+              "Tailwind CSS",
+              "Git",
+              "GitHub",
+              "REST APIs",
+              "JavaScript",
+              "TypeScript",
+            ].map((tech, index) => (
+              <span
+                key={index}
+                className="bg-slate-50 border border-zinc-200 text-zinc-700 px-3 py-1 rounded-lg text-xs font-mono font-medium tracking-wide transition-all duration-200 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 select-none cursor-default"
+              >
+                {tech}.env
+              </span>
+            ))}
+          </div>
         </motion.div>
 
       </div>

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-scroll";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FaLaptopCode } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { FaCubes } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const menuItems = [
     "Home",
@@ -17,106 +18,116 @@ export default function Navbar() {
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-black/30 border-b border-gray-800"
+    <motion.div
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-4 left-0 w-full z-50 px-4 sm:px-6 lg:px-8"
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <nav className="max-w-6xl mx-auto backdrop-blur-xl bg-white/85 border border-zinc-200/90 rounded-2xl shadow-md shadow-zinc-200/50 transition-all duration-300">
+        <div className="px-5 sm:px-6 py-3 flex justify-between items-center">
 
-        {/* Logo */}
-        <motion.div
-          whileHover={{ scale: 1.08 }}
-          className="flex items-center gap-2 cursor-pointer"
-        >
-          <FaLaptopCode
-            className="text-blue-500"
-            size={32}
-          />
+          {/* Logo */}
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex items-center gap-2.5 cursor-pointer group"
+          >
+            <div className="p-2 bg-zinc-900 border border-zinc-800 rounded-xl group-hover:bg-zinc-800 transition-colors duration-200">
+              <FaCubes className="text-white" size={16} />
+            </div>
+            <h1 className="text-base sm:text-lg font-semibold tracking-tight text-zinc-900">
+              Sai <span className="text-zinc-500 font-medium">Vijay</span>
+            </h1>
+          </motion.div>
 
-          <h1 className="text-2xl font-bold text-white">
-            Sai <span className="text-blue-500">Vijay</span>
-          </h1>
-        </motion.div>
+          {/* Desktop Nav Pills */}
+          <div className="hidden md:flex items-center gap-0.5 bg-slate-100/80 p-1 rounded-xl border border-zinc-200/80">
+            {menuItems.map((item, index) => (
+              <Link
+                key={item}
+                to={item.toLowerCase()}
+                smooth
+                duration={500}
+                offset={-90}
+                className="relative px-3.5 py-1.5 cursor-pointer text-xs text-zinc-600 hover:text-zinc-900 font-medium transition-colors duration-200 z-10"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                {hoveredIndex === index && (
+                  <motion.span
+                    layoutId="navHoverPill"
+                    className="absolute inset-0 bg-white border border-zinc-200/90 rounded-lg -z-10 shadow-sm"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                {item}
+              </Link>
+            ))}
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8">
-
-          {menuItems.map((item) => (
-            <Link
-              key={item}
-              to={item.toLowerCase()}
-              smooth
-              duration={500}
-              offset={-70}
-              className="cursor-pointer text-gray-300 hover:text-blue-400 transition duration-300 font-medium"
+          {/* Desktop CTA */}
+          <div className="hidden md:block">
+            <motion.a
+              whileHover={{ y: -1, scale: 1.02 }}
+              whileTap={{ y: 0, scale: 0.98 }}
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-zinc-900 hover:bg-zinc-800 rounded-xl shadow-md shadow-zinc-900/10 transition-all duration-200"
             >
-              {item}
-            </Link>
-          ))}
+              Resume
+            </motion.a>
+          </div>
 
+          {/* Mobile Toggle */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 rounded-xl text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100/80 transition-all duration-200 md:hidden focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {open ? <HiX size={22} /> : <HiMenuAlt3 size={22} />}
+          </button>
         </div>
 
-        {/* Resume Button */}
-        <div className="hidden md:block">
-
-          <a
-            href="/resume.pdf"
-            download
-            className="px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-700 transition font-semibold"
-          >
-            Resume
-          </a>
-
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="text-white md:hidden"
-        >
-          {open ? <HiX size={30} /> : <HiMenuAlt3 size={30} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-
-      {open && (
-
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-black/90 backdrop-blur-lg"
-        >
-
-          {menuItems.map((item) => (
-
-            <Link
-              key={item}
-              to={item.toLowerCase()}
-              smooth
-              duration={500}
-              offset={-70}
-              onClick={() => setOpen(false)}
-              className="block px-6 py-4 text-white border-b border-gray-800 cursor-pointer hover:bg-blue-600 transition"
+        {/* Mobile Sheet */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.28, ease: "easeInOut" }}
+              className="overflow-hidden md:hidden border-t border-zinc-200/80 bg-white/95 rounded-b-2xl"
             >
-              {item}
-            </Link>
+              <div className="px-4 py-3 space-y-1">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item}
+                    to={item.toLowerCase()}
+                    smooth
+                    duration={500}
+                    offset={-90}
+                    onClick={() => setOpen(false)}
+                    className="block px-4 py-2.5 text-xs font-medium text-zinc-700 rounded-xl cursor-pointer hover:bg-slate-100 hover:text-zinc-900 transition-all duration-200"
+                  >
+                    {item}
+                  </Link>
+                ))}
 
-          ))}
-
-          <a
-            href="/resume.pdf"
-            download
-            className="block text-center bg-blue-600 py-4 font-semibold hover:bg-blue-700"
-          >
-            Download Resume
-          </a>
-
-        </motion.div>
-
-      )}
-    </motion.nav>
+                <div className="pt-2 pb-1 px-2">
+                  <a
+                    href="/resume.pdf"
+                    download
+                    className="block text-center bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold uppercase tracking-wider py-2.5 rounded-xl transition-all duration-200 shadow-sm"
+                  >
+                    Download Resume
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+    </motion.div>
   );
 }
