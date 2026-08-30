@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import {
   FaGithub,
@@ -9,10 +10,50 @@ import {
   FaEnvelope,
   FaLinkedin,
   FaPhoneAlt,
+  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa";
 import RingPeLogo from "../assets/images/RingpeLogo.jpg";
+import movies from "../assets/images/movies.jpg";
 
 const projects = [
+  {
+    title: "RingPe Wallet Module",
+    category: "Mobile Payment Architecture",
+    image: RingPeLogo,
+    description:
+      "Independently developed the complete production-ready Wallet ecosystem for the RingPe payment platform (Live on Play Store). Engineered real-time balance state management, tokenized payment flows, and JWT session handling.",
+    technologies: [
+      "React Native",
+      "JavaScript",
+      "RESTful APIs",
+      "Node.js",
+      "JWT Auth",
+    ],
+    github: "https://github.com/vijaysai24",
+    demo: "https://play.google.com/store",
+    icon: <FaMobileAlt />,
+    badge: "Live on Play Store",
+  },
+  {
+    title: "Movie Recommendation System",
+    category: "Entertainment Discovery Platform",
+    image: movies,
+    description:
+      "Developed a dynamic movie and series discovery platform that aggregates movies and TV shows across multiple OTT platforms, upcoming releases, and theatrical releases using movie database APIs. Users can discover personalized movie and series recommendations based on context, explore detailed information, rate and review titles, create watchlists, mark favorites, and maintain a personalized profile including memorable movie dialogues.",
+    technologies: [
+      "React JS",
+      "Node.js",
+      "REST APIs",
+      "The Movie Database APIs",
+      "Recommendation Engine",
+      "MySQL",
+    ],
+    github: "https://github.com/vijaysai24",
+    demo: "#",
+    icon: <FaLaptopCode />,
+    badge: "Dynamic Content Platform",
+  },
   {
     title: "M-Live Track (MLive)",
     category: "Enterprise Tracking Engine",
@@ -34,22 +75,24 @@ const projects = [
     badge: "Enterprise Core",
   },
   {
-    title: "RingPe Wallet Module",
-    category: "Mobile Payment Architecture",
-    image: RingPeLogo,
+    title: "School Digitalization Application",
+    category: "Education Management Ecosystem",
+    image:
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80&auto=format&fit=crop",
     description:
-      "Independently developed the complete production-ready Wallet ecosystem for the RingPe payment platform (Live on Play Store). Engineered real-time balance state management, tokenized payment flows, and JWT session handling.",
+      "Built a comprehensive school digitalization platform that brings academic and administrative processes into a unified digital ecosystem. Teachers can assign classwork and homework, communicate with students and parents, track academic activities, while principals and management can publish announcements, monitor school operations, and manage role-based workflows across the institution.",
     technologies: [
-      "React Native",
-      "JavaScript",
-      "RESTful APIs",
+      "React JS",
       "Node.js",
-      "JWT Auth",
+      "REST APIs",
+      "MySQL",
+      "RBAC",
+      "Tailwind CSS",
     ],
     github: "https://github.com/vijaysai24",
-    demo: "https://play.google.com/store",
-    icon: <FaMobileAlt />,
-    badge: "Live on Play Store",
+    demo: "#",
+    icon: <FaLayerGroup />,
+    badge: "Education Ecosystem",
   },
   {
     title: "Restaurant Management System",
@@ -73,6 +116,19 @@ const projects = [
 ];
 
 export default function ProjectList() {
+  const scrollContainerRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, clientWidth } = scrollContainerRef.current;
+      const scrollAmount = clientWidth * 0.75;
+      scrollContainerRef.current.scrollTo({
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section
       id="projects"
@@ -90,7 +146,7 @@ export default function ProjectList() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="space-y-3 mb-16 text-center max-w-2xl mx-auto"
+          className="space-y-3 mb-10 text-center max-w-2xl mx-auto"
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white border border-zinc-200 rounded-full shadow-xs">
             <FaFolderOpen className="text-blue-500 text-xs" />
@@ -107,88 +163,105 @@ export default function ProjectList() {
           </p>
         </motion.div>
 
-        {/* Dynamic Project Grid Layout */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.12 }}
-              viewport={{ once: true }}
-              className="group bg-white/90 backdrop-blur-md border border-zinc-200/90 hover:border-zinc-300 rounded-[1.8rem] overflow-hidden shadow-sm hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-300 flex flex-col justify-between"
+        {/* Scroll Action Buttons */}
+        <div className="flex justify-between items-end mb-4 px-1">
+          <span className="text-xs font-mono text-zinc-500 hidden sm:inline-block">
+            ← Scroll horizontally to explore →
+          </span>
+          <div className="flex items-center gap-2 ml-auto">
+            <button
+              onClick={() => scroll("left")}
+              aria-label="Scroll left"
+              className="p-3 bg-white hover:bg-zinc-900 hover:text-white border border-zinc-200 text-zinc-700 rounded-full shadow-xs transition-all duration-200 cursor-pointer active:scale-95"
             >
-              <div>
-                {/* Media Mask Segment */}
-                <div className="overflow-hidden relative h-52 bg-slate-100 border-b border-zinc-100">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                  />
+              <FaChevronLeft className="text-xs" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              aria-label="Scroll right"
+              className="p-3 bg-white hover:bg-zinc-900 hover:text-white border border-zinc-200 text-zinc-700 rounded-full shadow-xs transition-all duration-200 cursor-pointer active:scale-95"
+            >
+              <FaChevronRight className="text-xs" />
+            </button>
+          </div>
+        </div>
 
-                  {/* Category Pill Tag */}
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-md border border-zinc-200/80 text-zinc-800 px-3 py-1 rounded-xl text-[11px] font-mono font-medium shadow-xs">
-                    <span className="text-blue-500 text-xs">{project.icon}</span>
-                    {project.category}
-                  </div>
+        {/* Horizontal Carousel Shell */}
+        <div className="relative group/carousel">
+          {/* Subtle Side Gradients for Visual Affordance */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
-                  {/* Highlight Badge */}
-                  {project.badge && (
-                    <div className="absolute top-4 right-4 bg-zinc-900/90 backdrop-blur-md text-white px-2.5 py-0.5 rounded-lg text-[10px] font-mono font-medium">
-                      {project.badge}
+          {/* Smooth Horizontal Scroll Container */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto pb-8 pt-2 scroll-smooth snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none]"
+          >
+            {projects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                viewport={{ once: true }}
+                className="group snap-start shrink-0 w-[85vw] sm:w-[360px] md:w-[380px] bg-white/90 backdrop-blur-md border border-zinc-200/90 hover:border-zinc-300 rounded-[1.8rem] overflow-hidden shadow-sm hover:shadow-xl hover:shadow-zinc-200/60 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  {/* Image Header with Zoom Effect */}
+                  <div className="overflow-hidden relative h-52 bg-slate-100 border-b border-zinc-100">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    />
+
+                    {/* Category Pill Tag */}
+                    <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md border border-zinc-200/80 text-zinc-800 px-3 py-1 rounded-xl text-[11px] font-mono font-medium shadow-xs">
+                      <span className="text-blue-500 text-xs">{project.icon}</span>
+                      {project.category}
                     </div>
-                  )}
-                </div>
 
-                {/* Content Parameters */}
-                <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-bold tracking-tight text-zinc-900">
-                    {project.title}
-                  </h3>
+                    {/* Highlight Badge */}
+                    {project.badge && (
+                      <div className="absolute top-4 right-4 bg-zinc-900/90 backdrop-blur-md text-white px-2.5 py-0.5 rounded-lg text-[10px] font-mono font-medium">
+                        {project.badge}
+                      </div>
+                    )}
+                  </div>
 
-                  <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed">
-                    {project.description}
-                  </p>
+                  {/* Text Details */}
+                  <div className="p-6 space-y-4">
+                    <h3 className="text-xl font-bold tracking-tight text-zinc-900">
+                      {project.title}
+                    </h3>
 
-                  {/* Core Stack Injection Tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {project.technologies.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="bg-slate-50 border border-zinc-200/80 text-zinc-700 px-2.5 py-1 rounded-lg text-xs font-mono font-medium hover:bg-zinc-100 transition-colors"
-                      >
-                        {tech}
+                    {/* Expandable Description Wrapper */}
+                    <div className="relative">
+                      <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed max-h-20 group-hover:max-h-96 line-clamp-3 group-hover:line-clamp-none transition-all duration-500 ease-in-out">
+                        {project.description}
+                      </p>
+                      <span className="block text-[11px] font-mono text-blue-500 mt-1 font-medium group-hover:hidden">
+                        To read full description ↓
                       </span>
-                    ))}
+                    </div>
+
+                    {/* Technology Badges */}
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {project.technologies.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="bg-slate-50 border border-zinc-200/80 text-zinc-700 px-2.5 py-1 rounded-lg text-xs font-mono font-medium hover:bg-zinc-100 transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Action Triggers */}
-              {/* <div className="p-6 pt-0 flex gap-3">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex-1 inline-flex justify-center items-center gap-2 py-2.5 rounded-xl bg-slate-100 border border-zinc-200 text-zinc-800 hover:bg-zinc-200/80 text-xs font-medium font-mono transition-colors duration-200"
-                >
-                  <FaGithub className="text-sm text-zinc-700" />
-                  Code
-                </a>
-
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex-1 inline-flex justify-center items-center gap-2 py-2.5 rounded-xl bg-zinc-900 text-white hover:bg-zinc-800 text-xs font-medium font-mono transition-colors duration-200 shadow-xs"
-                >
-                  <FaExternalLinkAlt className="text-[10px]" />
-                  Launch
-                </a>
-              </div> */}
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* System Engineering Call-To-Action Board */}
@@ -197,7 +270,7 @@ export default function ProjectList() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-20 border border-zinc-200/90 bg-white/90 backdrop-blur-md rounded-[1.8rem] p-8 md:p-12 text-center relative overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          className="mt-16 border border-zinc-200/90 bg-white/90 backdrop-blur-md rounded-[1.8rem] p-8 md:p-12 text-center relative overflow-hidden shadow-sm hover:shadow-md transition-shadow"
         >
           <div className="max-w-2xl mx-auto space-y-5 relative z-10">
             <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">

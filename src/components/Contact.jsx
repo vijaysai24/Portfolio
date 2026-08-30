@@ -166,7 +166,7 @@ export default function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder="Name"
                     required
                     className="w-full bg-slate-50/80 border border-zinc-200/70 hover:border-zinc-300 focus:border-zinc-400 focus:bg-white rounded-xl p-3.5 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:ring-1 focus:ring-zinc-300 transition-all duration-200"
                   />
@@ -181,7 +181,7 @@ export default function Contact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="name@domain.com"
+                    placeholder="mail@domain.com"
                     required
                     className="w-full bg-slate-50/80 border border-zinc-200/70 hover:border-zinc-300 focus:border-zinc-400 focus:bg-white rounded-xl p-3.5 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:ring-1 focus:ring-zinc-300 transition-all duration-200"
                   />
@@ -212,7 +212,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows="5"
-                  placeholder="Outline the operational requirements and architectural milestones..."
+                  placeholder="Outline the operational requirements"
                   required
                   className="w-full bg-slate-50/80 border border-zinc-200/70 hover:border-zinc-300 focus:border-zinc-400 focus:bg-white rounded-xl p-3.5 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:ring-1 focus:ring-zinc-300 transition-all duration-200 resize-none"
                 ></textarea>
