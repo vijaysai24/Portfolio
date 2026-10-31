@@ -1,147 +1,162 @@
-import { useState } from "react";
-import { Link } from "react-scroll";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FaCubes } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { FiDownload, FiMenu, FiX } from "react-icons/fi";
+import ScrollLink from "./ui/ScrollLink";
+import { EASE_OUT } from "./ui/motion";
+import { navItems, profile } from "../data/portfolio";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY, scrollYProgress } = useScroll();
 
-  const menuItems = [
-    "Home",
-    "About",
-    "Skills",
-    "Experience",
-    "Projects",
-    "Contact",
-  ];
+  // Solid bar once the page moves; tuck it away while reading downwards.
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const delta = y - (scrollY.getPrevious() ?? 0);
+    setScrolled(y > 16);
+    if (y < 600) setHidden(false);
+    else if (delta > 6) setHidden(true);
+    else if (delta < -6) setHidden(false);
+  });
+
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const onResize = (e) => e.matches && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    desktop.addEventListener("change", onResize);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", onResize);
+    };
+  }, [open]);
+
+  const solid = scrolled || open;
 
   return (
-    <motion.div
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-4 left-0 w-full z-50 px-4 sm:px-6 lg:px-8"
-    >
-      <nav className="max-w-6xl mx-auto backdrop-blur-xl bg-white/85 border border-zinc-200/90 rounded-2xl shadow-md shadow-zinc-200/50 transition-all duration-300">
-        <div className="px-5 sm:px-6 py-3 flex justify-between items-center">
+    <>
+      <motion.div
+        aria-hidden="true"
+        style={{ scaleX: scrollYProgress }}
+        className="fixed inset-x-0 top-0 z-60 h-0.5 origin-left bg-accent"
+      />
 
-          {/* Logo */}
-          <Link
+      <motion.header
+        initial={{ y: "-100%" }}
+        animate={{ y: hidden && !open ? "-100%" : "0%" }}
+        transition={{ duration: 0.5, ease: EASE_OUT }}
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow] duration-300 ${
+          solid ? "bg-paper/90 shadow-[0_1px_0_rgb(17_18_20/0.08)] backdrop-blur-md" : "bg-transparent"
+        }`}
+      >
+        <nav aria-label="Main" className="container-page flex h-16 items-center justify-between lg:h-18">
+          <ScrollLink
             to="home"
-            smooth
-            duration={500}
-            offset={-90}
-            className="flex items-center gap-2.5 cursor-pointer group"
+            onClick={() => setOpen(false)}
+            className="group flex items-center gap-2.5"
+            aria-label={`${profile.shortName}, back to top`}
           >
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2.5"
-            >
-              <div className="p-2 bg-zinc-900 border border-zinc-800 rounded-xl group-hover:bg-zinc-800 transition-colors duration-200">
-                <FaCubes className="text-white" size={16} />
-              </div>
-              <h1 className="text-base sm:text-lg font-semibold tracking-tight text-zinc-900">
-                Sai <span className="text-zinc-500 font-medium">Vijay</span>
-              </h1>
-            </motion.div>
-          </Link>
+            <span className="grid size-9 place-items-center rounded-[10px] bg-ink font-display text-[15px] font-bold tracking-tight text-paper transition-transform duration-500 ease-out group-hover:-rotate-6">
+              SV
+            </span>
+            <span className="font-display text-lg font-semibold tracking-tight">{profile.shortName}</span>
+          </ScrollLink>
 
-          {/* Desktop Nav Pills */}
-          <div className="hidden md:flex items-center gap-0.5 bg-slate-100/80 p-1 rounded-xl border border-zinc-200/80">
-            {menuItems.map((item, index) => (
-              <Link
-                key={item}
-                to={item.toLowerCase()}
-                smooth
-                duration={500}
-                offset={-90}
-                spy={true}
-                spyThrottle={50}
-                activeClass="!text-zinc-900 font-semibold"
-                className="relative px-3.5 py-1.5 cursor-pointer text-xs text-zinc-600 hover:text-zinc-900 font-medium transition-colors duration-200 z-10"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onSetActive={() => setHoveredIndex(index)}
-              >
-                {/* Persistent active / hover pill */}
-                {(hoveredIndex === index) && (
-                  <motion.span
-                    layoutId="navHoverPill"
-                    className="absolute inset-0 bg-white border border-zinc-200/90 rounded-lg -z-10 shadow-sm"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          <ul className="hidden items-center md:flex">
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <ScrollLink
+                  to={item.id}
+                  spy
+                  activeClass="is-active"
+                  className="group relative inline-flex px-3 py-2 text-[15px] text-ink-2 transition-colors hover:text-ink lg:px-3.5 [&.is-active]:text-ink"
+                >
+                  {item.label}
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-0.5 left-1/2 size-1 -translate-x-1/2 scale-0 rounded-full bg-accent transition-transform duration-300 group-[.is-active]:scale-100"
                   />
-                )}
-                {item}
-              </Link>
+                </ScrollLink>
+              </li>
             ))}
-          </div>
+          </ul>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <motion.a
-              whileHover={{ y: -1, scale: 1.02 }}
-              whileTap={{ y: 0, scale: 0.98 }}
-              href="/resume.pdf"
-              download
-              className="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-zinc-900 hover:bg-zinc-800 rounded-xl shadow-md shadow-zinc-900/10 transition-all duration-200"
+          <div className="flex items-center">
+            <a
+              href={profile.resume}
+              download={profile.resumeFileName}
+              className="btn btn-primary hidden min-h-10 px-4 text-sm md:inline-flex"
             >
-              Resume
-            </motion.a>
-          </div>
-
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="p-2 rounded-xl text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100/80 transition-all duration-200 md:hidden focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            {open ? <HiX size={22} /> : <HiMenuAlt3 size={22} />}
-          </button>
-        </div>
-
-        {/* Mobile Sheet */}
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.28, ease: "easeInOut" }}
-              className="overflow-hidden md:hidden border-t border-zinc-200/80 bg-white/95 rounded-b-2xl"
+              Resume <FiDownload aria-hidden="true" />
+            </a>
+            <button
+              type="button"
+              onClick={() => setOpen((value) => !value)}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={open ? "Close menu" : "Open menu"}
+              className="-mr-2 grid size-11 place-items-center rounded-full text-ink transition-colors hover:bg-paper-2 md:hidden"
             >
-              <div className="px-4 py-3 space-y-1">
-                {menuItems.map((item) => (
-                  <Link
-                    key={item}
-                    to={item.toLowerCase()}
-                    smooth
-                    duration={500}
-                    offset={-90}
-                    spy={true}
-                    activeClass="bg-slate-100 text-zinc-900 font-semibold"
-                    onClick={() => setOpen(false)}
-                    className="block px-4 py-2.5 text-xs font-medium text-zinc-700 rounded-xl cursor-pointer hover:bg-slate-100 hover:text-zinc-900 transition-all duration-200"
-                  >
-                    {item}
-                  </Link>
-                ))}
+              {open ? <FiX size={22} /> : <FiMenu size={22} />}
+            </button>
+          </div>
+        </nav>
+      </motion.header>
 
-                <div className="pt-2 pb-1 px-2">
-                  <a
-                    href="/resume.pdf"
-                    download
-                    className="block text-center bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold uppercase tracking-wider py-2.5 rounded-xl transition-all duration-200 shadow-sm"
-                  >
-                    Download Resume
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <AnimatePresence>{open && <MobileMenu onClose={() => setOpen(false)} />}</AnimatePresence>
+    </>
+  );
+}
+
+function MobileMenu({ onClose }) {
+  return (
+    <motion.div
+      id="mobile-menu"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      className="fixed inset-0 z-40 flex flex-col bg-paper pt-16 md:hidden"
+    >
+      <nav aria-label="Mobile" className="container-page flex flex-1 flex-col justify-between overflow-y-auto pb-10 pt-6">
+        <ul>
+          {navItems.map((item, i) => (
+            <motion.li
+              key={item.id}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.04 + i * 0.05, duration: 0.6, ease: EASE_OUT }}
+            >
+              <ScrollLink
+                to={item.id}
+                onClick={onClose}
+                className="block py-1.5 font-display text-[2.5rem] font-semibold leading-tight tracking-[-0.03em] text-ink active:text-accent"
+              >
+                {item.label}
+              </ScrollLink>
+            </motion.li>
+          ))}
+        </ul>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.35, duration: 0.5 }}
+          className="space-y-6 pt-10"
+        >
+          <a href={profile.resume} download={profile.resumeFileName} className="btn btn-primary w-full">
+            Download resume <FiDownload aria-hidden="true" />
+          </a>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-ink-2">
+            <a href={`mailto:${profile.email}`} className="link-underline">Email</a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="link-underline">LinkedIn</a>
+            <a href={profile.github} target="_blank" rel="noreferrer" className="link-underline">GitHub</a>
+          </div>
+        </motion.div>
       </nav>
     </motion.div>
   );

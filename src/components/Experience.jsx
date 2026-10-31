@@ -1,185 +1,123 @@
-import { motion } from "framer-motion";
-import {
-  FaBriefcase,
-  FaCalendarAlt,
-  FaMapMarkerAlt,
-  FaCheckCircle,
-} from "react-icons/fa";
-
-const experiences = [
-  {
-    company: "SABADO Technologies",
-    role: "Software Development Engineer",
-    duration: "June 2024 - Present",
-    location: "Bangalore, India",
-    isCurrent: true,
-    technologies: [
-      "Angular",
-      "React",
-      "React Native",
-      "Node.js",
-      "Express.js",
-      "MySQL",
-      "Tailwind CSS",
-      "REST APIs",
-      "Git",
-    ],
-    responsibilities: [
-      "Designed and developed scalable web applications using Angular and React.",
-      "Built cross-platform mobile applications using React Native.",
-      "Developed backend REST APIs with Node.js and Express.js.",
-      "Designed MySQL database schemas and optimized SQL queries.",
-      "Implemented JWT authentication and Role-Based Access Control (RBAC).",
-      "Developed the complete Wallet module for the RingPe payment application.",
-      "Optimized application performance through lazy loading and API optimization.",
-    ],
-  },
-  {
-    company: "Black Bucks Pvt Ltd",
-    role: "Software Development Intern",
-    duration: "June 2023 - August 2023",
-    location: "Bangalore, India",
-    isCurrent: false,
-    technologies: [
-      "React",
-      "Node.js",
-      "Express.js",
-      "MySQL",
-      "REST APIs",
-      "Git",
-    ],
-    responsibilities: [
-      "Built a functional Restaurant Management System platform.",
-      "Designed responsive frontend layout pages using React.",
-      "Created transactional backend API pipelines using Node.js and Express.",
-      "Integrated structural MySQL database CRUD engines with strict query execution validations.",
-    ],
-  },
-];
+import { FiArrowDown } from "react-icons/fi";
+import Reveal from "./ui/Reveal";
+import ScrollLink from "./ui/ScrollLink";
+import SectionHeader from "./ui/SectionHeader";
+import { education, experience, featuredProject, profile } from "../data/portfolio";
 
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      className="relative bg-slate-50 text-slate-900 py-12 overflow-hidden"
-    >
-      {/* Ambient Gradient Soft Aura Spots (Matching Hero/About/Skills) */}
-      <div className="absolute top-1/4 -right-20 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-10 -left-20 w-[450px] h-[450px] bg-indigo-400/10 rounded-full blur-[160px] pointer-events-none" />
+    <section id="experience" aria-labelledby="experience-title" className="section-space">
+      <div className="container-page">
+        <SectionHeader id="experience-title" title="Experience">
+          {profile.experience} building production software for web and mobile, from a full stack internship to
+          my current role at {profile.currentCompany}.
+        </SectionHeader>
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <ol className="mt-16 space-y-20 lg:mt-24 lg:space-y-32">
+          {experience.map((job) => (
+            <Role key={job.company} job={job} />
+          ))}
+        </ol>
 
-        {/* Section Header Block */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-3 mb-16 text-center max-w-2xl mx-auto"
-        >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white border border-zinc-200 rounded-full shadow-xs">
-            <FaBriefcase className="text-blue-500 text-xs" />
-            <span className="text-[11px] font-mono text-zinc-600 font-medium tracking-wider uppercase">
-              Career Journey
-            </span>
-          </div>
+        <Reveal className="mt-20 grid gap-6 rounded-3xl bg-paper-2 p-6 sm:p-8 lg:mt-32 lg:grid-cols-12 lg:gap-8 lg:p-10">
+          <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl lg:col-span-4">Education</h3>
+          <ul className="divide-y divide-ink/10 lg:col-span-8">
+            {education.map((item) => (
+              <li
+                key={item.school}
+                className="flex flex-col gap-1 py-5 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+              >
+                <div>
+                  <p className="text-lg font-semibold">{item.degree}</p>
+                  <p className="mt-0.5 text-ink-2">{item.school}</p>
+                </div>
+                <p className="shrink-0 text-[15px] tabular-nums text-ink-3">{item.period}</p>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-            Professional Experience
-          </h2>
-          <p className="text-zinc-600 text-sm sm:text-base leading-relaxed">
-            Track record of constructing enterprise web dashboards, cross-platform mobile apps, and robust API architectures.
+function Role({ job }) {
+  return (
+    <li className="grid gap-8 lg:grid-cols-12 lg:gap-8">
+      <Reveal className="lg:col-span-4">
+        <div className="lg:sticky lg:top-28">
+          <p className="text-[15px] tabular-nums text-ink-3">{job.period}</p>
+          <p className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+            {job.company}
           </p>
-        </motion.div>
+          <p className="mt-1 text-ink-2">{job.location}</p>
+          {job.current && (
+            <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-success/10 px-3 py-1 text-sm font-medium text-success">
+              <span aria-hidden="true" className="size-1.5 rounded-full bg-success" />
+              Current role
+            </p>
+          )}
+        </div>
+      </Reveal>
 
-        {/* Timeline Container */}
-        <div className="relative border-l border-zinc-200/80 ml-4 md:ml-6 space-y-10">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.12 }}
-              viewport={{ once: true }}
-              className="relative pl-7 md:pl-10 group"
-            >
-              {/* Illuminated Timeline Node */}
-              <div className="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-white border-2 border-zinc-300 group-hover:border-blue-600 transition-colors duration-300 flex items-center justify-center shadow-xs">
-                <div className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${exp.isCurrent ? 'bg-emerald-500 animate-pulse' : 'bg-zinc-400 group-hover:bg-blue-600'}`} />
-              </div>
+      <div className="lg:col-span-8">
+        <Reveal as="h3" className="text-[1.75rem] font-semibold leading-tight tracking-tight sm:text-[2.25rem]">
+          {job.role}
+        </Reveal>
+        <Reveal as="p" delay={0.05} className="mt-3 max-w-2xl text-lg leading-relaxed text-ink-2">
+          {job.summary}
+        </Reveal>
 
-              {/* Glass Card Container */}
-              <div className="bg-white/90 backdrop-blur-md border border-zinc-200/90 hover:border-zinc-300 rounded-[1.8rem] p-6 sm:p-8 space-y-6 shadow-sm hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-300">
+        {job.highlight && (
+          <Reveal delay={0.1} className="mt-8 flex flex-col gap-5 rounded-3xl bg-ringpe p-6 text-white sm:flex-row sm:p-7">
+            <img
+              src={featuredProject.logo}
+              alt=""
+              width="64"
+              height="64"
+              loading="lazy"
+              className="size-14 shrink-0 rounded-2xl bg-white object-contain p-1.5 sm:size-16"
+            />
+            <div>
+              <p className="text-sm font-medium text-white/75">Key contribution</p>
+              <p className="mt-1.5 text-lg leading-snug">{job.highlight}</p>
+              <ScrollLink
+                to="projects"
+                className="mt-4 inline-flex items-center gap-1.5 text-[15px] font-medium text-white"
+              >
+                <span className="link-underline">See the project</span>
+                <FiArrowDown aria-hidden="true" />
+              </ScrollLink>
+            </div>
+          </Reveal>
+        )}
 
-                {/* Meta Header */}
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 border-b border-zinc-100 pb-5">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2.5">
-                      <h3 className="text-xl font-bold text-zinc-900">
-                        {exp.role}
-                      </h3>
-                      {exp.isCurrent && (
-                        <span className="px-2 py-0.5 text-[10px] font-mono font-semibold bg-emerald-50 text-emerald-600 border border-emerald-200 rounded-md">
-                          Active Role
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-sm font-semibold text-zinc-600">
-                      {exp.company}
-                    </p>
-                  </div>
-
-                  {/* Metadata Tags */}
-                  <div className="flex flex-wrap gap-2 text-xs font-mono text-zinc-600 md:items-end md:flex-col">
-                    <span className="inline-flex items-center gap-1.5 bg-slate-50 px-3 py-1 rounded-lg border border-zinc-200/80 font-medium shadow-2xs">
-                      <FaCalendarAlt className="text-[10px] text-zinc-400" />
-                      {exp.duration}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 bg-slate-50/70 px-3 py-1 rounded-lg border border-zinc-200/80 font-medium">
-                      <FaMapMarkerAlt className="text-[10px] text-zinc-400" />
-                      {exp.location}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Scope Responsibilities Description */}
-                <div className="space-y-3">
-                  <h4 className="text-xs font-mono font-bold tracking-wider uppercase text-zinc-400 flex items-center gap-1.5">
-                    <FaCheckCircle className="text-blue-500 text-[10px]" /> Key Contributions
-                  </h4>
-                  <ul className="space-y-2.5">
-                    {exp.responsibilities.map((item, i) => (
-                      <li key={i} className="text-zinc-600 text-xs sm:text-sm leading-relaxed flex items-start gap-2.5">
-                        <span className="text-blue-500 select-none mt-1 text-[11px] font-mono">▸</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Framework and Skills Pills Block */}
-                <div className="space-y-3 pt-2 border-t border-zinc-100">
-                  <h4 className="text-xs font-mono font-bold tracking-wider uppercase text-zinc-400">
-                    Engineered Stack
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="bg-slate-50/80 hover:bg-zinc-900 hover:text-white border border-zinc-200/80 text-zinc-700 px-3 py-1 rounded-lg text-xs font-mono font-medium transition-all duration-200 select-none cursor-default"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-              </div>
-            </motion.div>
+        <div className={`mt-10 grid gap-x-10 gap-y-9 ${job.groups.length > 1 ? "sm:grid-cols-2" : ""}`}>
+          {job.groups.map((group, i) => (
+            <Reveal key={group.title} delay={(i % 2) * 0.08}>
+              <h4 className="font-sans text-[15px] font-semibold text-ink">{group.title}</h4>
+              <ul className="mt-3 space-y-3">
+                {group.points.map((point) => (
+                  <li
+                    key={point}
+                    className="relative pl-5 text-[0.975rem] leading-relaxed text-ink-2 before:absolute before:left-0 before:top-[0.8em] before:h-0.5 before:w-2.5 before:rounded-full before:bg-accent"
+                  >
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           ))}
         </div>
 
+        <Reveal as="ul" aria-label="Technologies used" className="mt-9 flex flex-wrap gap-2">
+          {job.stack.map((name) => (
+            <li key={name} className="chip">
+              {name}
+            </li>
+          ))}
+        </Reveal>
       </div>
-    </section>
+    </li>
   );
 }

@@ -1,321 +1,237 @@
-import { useRef } from "react";
-import { motion } from "framer-motion";
-import {
-  FaGithub,
-  FaExternalLinkAlt,
-  FaMobileAlt,
-  FaLaptopCode,
-  FaFolderOpen,
-  FaLayerGroup,
-  FaEnvelope,
-  FaLinkedin,
-  FaPhoneAlt,
-  FaChevronLeft,
-  FaChevronRight,
-} from "react-icons/fa";
-import RingPeLogo from "../assets/images/RingpeLogo.jpg";
-import movies from "../assets/images/movies.jpg";
-
-const projects = [
-  {
-    title: "RingPe Wallet Module",
-    category: "Mobile Payment Architecture",
-    image: RingPeLogo,
-    description:
-      "Independently developed the complete production-ready Wallet ecosystem for the RingPe payment platform (Live on Play Store). Engineered real-time balance state management, tokenized payment flows, and JWT session handling.",
-    technologies: [
-      "React Native",
-      "JavaScript",
-      "RESTful APIs",
-      "Node.js",
-      "JWT Auth",
-    ],
-    github: "https://github.com/vijaysai24",
-    demo: "https://play.google.com/store",
-    icon: <FaMobileAlt />,
-    badge: "Live on Play Store",
-  },
-  {
-    title: "Movie Recommendation System",
-    category: "Entertainment Discovery Platform",
-    image: movies,
-    description:
-      "Developed a dynamic movie and series discovery platform that aggregates movies and TV shows across multiple OTT platforms, upcoming releases, and theatrical releases using movie database APIs. Users can discover personalized movie and series recommendations based on context, explore detailed information, rate and review titles, create watchlists, mark favorites, and maintain a personalized profile including memorable movie dialogues.",
-    technologies: [
-      "React JS",
-      "Node.js",
-      "REST APIs",
-      "The Movie Database APIs",
-      "Recommendation Engine",
-      "MySQL",
-    ],
-    github: "https://github.com/vijaysai24",
-    demo: "#",
-    icon: <FaLaptopCode />,
-    badge: "Dynamic Content Platform",
-  },
-  {
-    title: "M-Live Track (MLive)",
-    category: "Enterprise Tracking Engine",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop",
-    description:
-      "Architected a comprehensive enterprise tracking & workflow platform featuring Master Data management, reservation pipelines, and process flows for Inward Goods & GRN (Goods Receive Note).",
-    technologies: [
-      "Angular",
-      "Tailwind CSS",
-      "Node.js",
-      "REST APIs",
-      "RBAC",
-      "MySQL",
-    ],
-    github: "https://github.com/vijaysai24",
-    demo: "#",
-    icon: <FaLayerGroup />,
-    badge: "Enterprise Core",
-  },
-  {
-    title: "School Digitalization Application",
-    category: "Education Management Ecosystem",
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80&auto=format&fit=crop",
-    description:
-      "Built a comprehensive school digitalization platform that brings academic and administrative processes into a unified digital ecosystem. Teachers can assign classwork and homework, communicate with students and parents, track academic activities, while principals and management can publish announcements, monitor school operations, and manage role-based workflows across the institution.",
-    technologies: [
-      "React JS",
-      "Node.js",
-      "REST APIs",
-      "MySQL",
-      "RBAC",
-      "Tailwind CSS",
-    ],
-    github: "https://github.com/vijaysai24",
-    demo: "#",
-    icon: <FaLayerGroup />,
-    badge: "Education Ecosystem",
-  },
-  {
-    title: "Restaurant Management System",
-    category: "Full-Stack Data Management",
-    image:
-      "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=1200&q=80&auto=format&fit=crop",
-    description:
-      "Constructed an end-to-end administration platform for managing dynamic menu hierarchies, pricing variants, category schemas, and CRUD transaction pipelines with backend validation.",
-    technologies: [
-      "React JS",
-      "Node.js",
-      "Express.js",
-      "MySQL",
-      "RESTful APIs",
-    ],
-    github: "https://github.com/vijaysai24",
-    demo: "#",
-    icon: <FaLaptopCode />,
-    badge: "Full-Stack System",
-  },
-];
+import { FiArrowUpRight, FiCheck, FiGithub } from "react-icons/fi";
+import Reveal from "./ui/Reveal";
+import SectionHeader from "./ui/SectionHeader";
+import { featuredProject, profile, projects } from "../data/portfolio";
 
 export default function ProjectList() {
-  const scrollContainerRef = useRef(null);
-
-  const scroll = (direction) => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, clientWidth } = scrollContainerRef.current;
-      const scrollAmount = clientWidth * 0.75;
-      scrollContainerRef.current.scrollTo({
-        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
-    <section
-      id="projects"
-      className="relative bg-slate-50 text-slate-900 py-12 overflow-hidden"
-    >
-      {/* Ambient Soft Glow Background Spots */}
-      <div className="absolute top-1/3 -left-20 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-10 -right-20 w-[450px] h-[450px] bg-indigo-500/10 rounded-full blur-[160px] pointer-events-none" />
+    <section id="projects" aria-labelledby="projects-title" className="section-space bg-night text-paper">
+      <div className="container-page">
+        <SectionHeader id="projects-title" title="Featured projects" dark>
+          A payments feature in production, enterprise workflow tools and full stack web apps. RingPe comes first:
+          it's live, and I built its wallet on my own.
+        </SectionHeader>
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <FeaturedProject project={featuredProject} />
 
-        {/* Section Header Block */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-3 mb-10 text-center max-w-2xl mx-auto"
-        >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white border border-zinc-200 rounded-full shadow-xs">
-            <FaFolderOpen className="text-blue-500 text-xs" />
-            <span className="text-[11px] font-mono text-zinc-600 font-medium tracking-wider uppercase">
-              Selected Portfolio Work
-            </span>
-          </div>
+        <ul className="mt-20 grid gap-x-10 gap-y-20 md:grid-cols-2 md:pb-28 lg:mt-28 lg:gap-x-14">
+          {projects.map((project, i) => (
+            // the right-hand column sits lower for a staggered rhythm
+            <li key={project.id} className={i % 2 === 1 ? "md:translate-y-28" : ""}>
+              <ProjectCard project={project} />
+            </li>
+          ))}
+        </ul>
 
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-            Featured Projects
-          </h2>
-          <p className="text-zinc-600 text-sm sm:text-base leading-relaxed">
-            Scalable web dashboards, production mobile platforms, and enterprise system architectures built for high performance.
-          </p>
-        </motion.div>
-
-        {/* Scroll Action Buttons */}
-        <div className="flex justify-between items-end mb-4 px-1">
-          <span className="text-xs font-mono text-zinc-500 hidden sm:inline-block">
-            ← Scroll horizontally to explore →
-          </span>
-          <div className="flex items-center gap-2 ml-auto">
-            <button
-              onClick={() => scroll("left")}
-              aria-label="Scroll left"
-              className="p-3 bg-white hover:bg-zinc-900 hover:text-white border border-zinc-200 text-zinc-700 rounded-full shadow-xs transition-all duration-200 cursor-pointer active:scale-95"
-            >
-              <FaChevronLeft className="text-xs" />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              aria-label="Scroll right"
-              className="p-3 bg-white hover:bg-zinc-900 hover:text-white border border-zinc-200 text-zinc-700 rounded-full shadow-xs transition-all duration-200 cursor-pointer active:scale-95"
-            >
-              <FaChevronRight className="text-xs" />
-            </button>
-          </div>
-        </div>
-
-        {/* Horizontal Carousel Shell */}
-        <div className="relative group/carousel">
-          {/* Subtle Side Gradients for Visual Affordance */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
-
-          {/* Smooth Horizontal Scroll Container */}
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto pb-8 pt-2 scroll-smooth snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none]"
-          >
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                viewport={{ once: true }}
-                className="group snap-start shrink-0 w-[85vw] sm:w-[360px] md:w-[380px] bg-white/90 backdrop-blur-md border border-zinc-200/90 hover:border-zinc-300 rounded-[1.8rem] overflow-hidden shadow-sm hover:shadow-xl hover:shadow-zinc-200/60 transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  {/* Image Header with Zoom Effect */}
-                  <div className="overflow-hidden relative h-52 bg-slate-100 border-b border-zinc-100">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="h-full w-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                    />
-
-                    {/* Category Pill Tag */}
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md border border-zinc-200/80 text-zinc-800 px-3 py-1 rounded-xl text-[11px] font-mono font-medium shadow-xs">
-                      <span className="text-blue-500 text-xs">{project.icon}</span>
-                      {project.category}
-                    </div>
-
-                    {/* Highlight Badge */}
-                    {project.badge && (
-                      <div className="absolute top-4 right-4 bg-zinc-900/90 backdrop-blur-md text-white px-2.5 py-0.5 rounded-lg text-[10px] font-mono font-medium">
-                        {project.badge}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Text Details */}
-                  <div className="p-6 space-y-4">
-                    <h3 className="text-xl font-bold tracking-tight text-zinc-900">
-                      {project.title}
-                    </h3>
-
-                    {/* Expandable Description Wrapper */}
-                    <div className="relative">
-                      <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed max-h-20 group-hover:max-h-96 line-clamp-3 group-hover:line-clamp-none transition-all duration-500 ease-in-out">
-                        {project.description}
-                      </p>
-                      <span className="block text-[11px] font-mono text-blue-500 mt-1 font-medium group-hover:hidden">
-                        To read full description ↓
-                      </span>
-                    </div>
-
-                    {/* Technology Badges */}
-                    <div className="flex flex-wrap gap-1.5 pt-2">
-                      {project.technologies.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="bg-slate-50 border border-zinc-200/80 text-zinc-700 px-2.5 py-1 rounded-lg text-xs font-mono font-medium hover:bg-zinc-100 transition-colors"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* System Engineering Call-To-Action Board */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-16 border border-zinc-200/90 bg-white/90 backdrop-blur-md rounded-[1.8rem] p-8 md:p-12 text-center relative overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-        >
-          <div className="max-w-2xl mx-auto space-y-5 relative z-10">
-            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">
-              System Engineering & Collaboration
-            </h3>
-            <p className="text-zinc-600 text-sm md:text-base leading-relaxed">
-              Focused on constructing enterprise user ecosystems, modular frontend architecture, role-based access control, and robust API integrations. Let's build something scalable together.
-            </p>
-
-            {/* Direct Contact Bar */}
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-700">
-              <a
-                href="mailto:saipechetti2002@gmail.com"
-                className="inline-flex items-center gap-2 px-3.5 py-2 bg-slate-50 border border-zinc-200/80 rounded-xl hover:bg-slate-100 transition-colors"
-              >
-                <FaEnvelope className="text-blue-500" /> saipechetti2002@gmail.com
-              </a>
-              <a
-                href="tel:9347549149"
-                className="inline-flex items-center gap-2 px-3.5 py-2 bg-slate-50 border border-zinc-200/80 rounded-xl hover:bg-slate-100 transition-colors"
-              >
-                <FaPhoneAlt className="text-emerald-500" /> +91 9347549149
-              </a>
-              <a
-                href="https://linkedin.com/in/vijaypechetti"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-2 bg-slate-50 border border-zinc-200/80 rounded-xl hover:bg-slate-100 transition-colors"
-              >
-                <FaLinkedin className="text-blue-600" /> LinkedIn
-              </a>
-            </div>
-
-            <div className="pt-4">
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center px-6 py-3 bg-zinc-900 hover:bg-zinc-800 text-white rounded-xl text-xs font-mono font-medium transition-colors duration-200 shadow-md shadow-zinc-900/10"
-              >
-                Establish Connection
-              </a>
-            </div>
-          </div>
-        </motion.div>
-
+        <Reveal className="mt-20 flex flex-col items-start gap-5 rounded-3xl bg-night-2 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <p className="text-lg text-mist">More of my code lives on GitHub.</p>
+          <a href={profile.github} target="_blank" rel="noreferrer" className="btn btn-light shrink-0">
+            <FiGithub aria-hidden="true" /> github.com/{profile.githubHandle}
+          </a>
+        </Reveal>
       </div>
     </section>
+  );
+}
+
+function FeaturedProject({ project }) {
+  return (
+    <Reveal
+      as="article"
+      aria-labelledby="ringpe-title"
+      className="relative mt-14 overflow-hidden rounded-4xl bg-ringpe text-white lg:mt-20"
+    >
+      <div className="grid lg:grid-cols-12">
+        <div className="relative z-10 p-7 sm:p-10 lg:col-span-7 lg:p-14">
+          <p className="flex items-center gap-2.5 text-[15px] font-medium text-white/85">
+            <span className="relative flex size-2.5" aria-hidden="true">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-[#7CF0A9]/60" />
+              <span className="relative inline-flex size-2.5 rounded-full bg-[#7CF0A9]" />
+            </span>
+            {project.label}
+          </p>
+          <h3
+            id="ringpe-title"
+            className="mt-4 text-5xl font-semibold leading-[0.95] tracking-[-0.04em] sm:text-6xl lg:text-7xl"
+          >
+            {project.title}
+          </h3>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">{project.summary}</p>
+
+          <h4 className="sr-only">What I built</h4>
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            {project.features.map((feature) => (
+              <li key={feature} className="flex items-start gap-3 text-[0.975rem] leading-snug">
+                <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-white/15">
+                  <FiCheck aria-hidden="true" className="size-3" />
+                </span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <ul aria-label="Technologies used" className="mt-8 flex flex-wrap gap-2">
+            {project.stack.map((name) => (
+              <li key={name} className="chip bg-white/12 text-white">
+                {name}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href={project.storeUrl} target="_blank" rel="noreferrer" className="btn btn-light">
+              Find it on Google Play <FiArrowUpRight aria-hidden="true" />
+            </a>
+            <p className="text-[15px] text-white/75">{project.context}</p>
+          </div>
+        </div>
+
+        <RingVisual logo={project.logo} />
+      </div>
+    </Reveal>
+  );
+}
+
+// "Ring" in RingPe, drawn as rings radiating from the app icon.
+function RingVisual({ logo }) {
+  return (
+    <div aria-hidden="true" className="relative grid min-h-88 place-items-center overflow-hidden lg:col-span-5 lg:min-h-0">
+      {[0, 1, 2].map((i) => (
+        <span
+          key={`static-${i}`}
+          className="absolute aspect-square rounded-full border border-white/12"
+          style={{ width: `${44 + i * 22}%` }}
+        />
+      ))}
+      {[0, 1, 2].map((i) => (
+        <span
+          key={`ripple-${i}`}
+          className="absolute aspect-square w-[80%] animate-ripple rounded-full border-2 border-white/40"
+          style={{ animationDelay: `${i * 1.5}s` }}
+        />
+      ))}
+      <div className="relative grid size-36 -rotate-6 place-items-center rounded-[2.2rem] bg-white shadow-[0_30px_60px_-20px_rgb(10_14_60/0.6)] transition-transform duration-700 ease-out hover:rotate-0 sm:size-44">
+        <img src={logo} alt="" width="385" height="376" loading="lazy" className="w-[78%]" />
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({ project }) {
+  // a gentle drift of the cover toward the pointer
+  const handlePointerMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--mx", ((e.clientX - rect.left) / rect.width - 0.5).toFixed(3));
+    e.currentTarget.style.setProperty("--my", ((e.clientY - rect.top) / rect.height - 0.5).toFixed(3));
+  };
+  const handlePointerLeave = (e) => {
+    e.currentTarget.style.setProperty("--mx", "0");
+    e.currentTarget.style.setProperty("--my", "0");
+  };
+  const { repo, live } = project.links;
+
+  return (
+    <Reveal as="article" aria-labelledby={`${project.id}-title`} className="group">
+      <div
+        onPointerMove={handlePointerMove}
+        onPointerLeave={handlePointerLeave}
+        className="relative aspect-4/3 overflow-hidden rounded-3xl bg-night-2"
+      >
+        <div
+          className="size-full transition-[scale,translate] duration-700 ease-out group-hover:scale-[1.05]"
+          style={{ translate: "calc(var(--mx, 0) * -16px) calc(var(--my, 0) * -16px)" }}
+        >
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.imageAlt}
+              width="1200"
+              height="675"
+              loading="lazy"
+              decoding="async"
+              className="size-full object-cover"
+            />
+          ) : (
+            <ProjectCover project={project} />
+          )}
+        </div>
+      </div>
+
+      <div className="mt-7">
+        <p className="text-[15px] text-mist">
+          {project.category}
+          {project.context && <span className="text-accent-bright"> · {project.context}</span>}
+        </p>
+        <h3
+          id={`${project.id}-title`}
+          className="mt-2 text-[1.85rem] font-semibold leading-tight tracking-[-0.03em] sm:text-[2.15rem]"
+        >
+          {project.title}
+        </h3>
+        <p className="mt-3 text-[1.0625rem] leading-relaxed text-mist">{project.summary}</p>
+
+        <h4 className="sr-only">Key features</h4>
+        <ul className="mt-5 space-y-2">
+          {project.features.map((feature) => (
+            <li
+              key={feature}
+              className="relative pl-5 text-[0.975rem] leading-snug text-paper/90 before:absolute before:left-0 before:top-[0.6em] before:h-0.5 before:w-2.5 before:rounded-full before:bg-accent-bright"
+            >
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        <ul aria-label="Technologies used" className="mt-6 flex flex-wrap gap-2">
+          {project.stack.map((name) => (
+            <li key={name} className="chip bg-night-3 text-mist">
+              {name}
+            </li>
+          ))}
+        </ul>
+
+        {(repo || live) && (
+          <div className="mt-6 flex flex-wrap gap-3">
+            {live && (
+              <a href={live} target="_blank" rel="noreferrer" className="btn btn-light min-h-11 px-5">
+                Live demo <FiArrowUpRight aria-hidden="true" />
+              </a>
+            )}
+            {repo && (
+              <a href={repo} target="_blank" rel="noreferrer" className="btn btn-ghost-light min-h-11 px-5">
+                <FiGithub aria-hidden="true" /> Source code
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+    </Reveal>
+  );
+}
+
+const coverTones = {
+  teal: "bg-[#0e3a3e] text-[#d3ebe7]",
+  stone: "bg-[#d8d3c6] text-ink",
+  graphite: "bg-[#2c2f38] text-paper",
+};
+
+// A typographic cover built from the project's real modules, used until a screenshot is added.
+function ProjectCover({ project }) {
+  const { tone, words } = project.cover;
+  return (
+    <div aria-hidden="true" className={`flex size-full flex-col justify-between p-6 sm:p-8 ${coverTones[tone]}`}>
+      <p className="text-sm font-medium opacity-70">Core modules</p>
+      <ul>
+        {words.map((word, i) => (
+          <li
+            key={word}
+            className="font-display text-[clamp(1.9rem,4.2vw,3.25rem)] font-semibold leading-[1.02] tracking-[-0.035em] transition-transform duration-700 ease-out group-hover:translate-x-3"
+            style={{ opacity: 1 - i * 0.2, transitionDelay: `${i * 45}ms` }}
+          >
+            {word}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
